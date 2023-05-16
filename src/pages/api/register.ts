@@ -1,5 +1,5 @@
 
-import createUser from '@/models/user'
+import createUser from '@/services/models/user'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 

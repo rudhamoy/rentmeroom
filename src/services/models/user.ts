@@ -1,5 +1,5 @@
 
-import conn from "@/services/mongodb/database";
+import conn from "@/services/connection/database";
 import { Schema } from "mongoose";
 
 
