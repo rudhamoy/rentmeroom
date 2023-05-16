@@ -2,6 +2,7 @@
 import conn from "@/services/mongodb/database";
 import { Schema } from "mongoose";
 
+
 type IUser = {
     name: String,
     email: String,
