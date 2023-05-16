@@ -1,8 +1,5 @@
 const { MongoClient } = require("mongodb");
 
-
-
-
 let cachedClient: any = null;
 let cachedDb: any = null;
 
