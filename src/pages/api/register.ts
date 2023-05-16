@@ -1,3 +1,5 @@
+
+import createUser from '@/models/user'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 
@@ -12,7 +14,12 @@ export default async function handler(
     res: NextApiResponse
 ) {
     if (req.method === 'POST') {
-        return res.status(200).json({ message: "Successfully created....." })
+        let doc = await createUser(req.body);
+        return res.status(200).json({
+            message: "Successfully created.....",
+            data: doc,
+
+        })
     } else {
         res.status(400).json({ error: "Get request is not allowed." })
     }
