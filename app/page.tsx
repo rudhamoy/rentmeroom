@@ -1,9 +1,12 @@
+import FilterButton from "./components/homepage/FilterButton";
+import HeroSection from "./components/homepage/HeroSection";
 
 
 export default function Home() {
   return (
-    <div>
-      <h1>Rentmetoom</h1>
+    <div style={{marginBottom: "1rem"}}>
+      <HeroSection />
+      <FilterButton />
     </div>
   )
 }
