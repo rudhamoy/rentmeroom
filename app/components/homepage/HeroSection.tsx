@@ -11,7 +11,7 @@ const HeroSection = () => {
             <input placeholder='House type' />
             <input placeholder='Price range' />
           </div>
-          <button>Find</button>
+          <button>Search</button>
         </div>
       </div>
       <div className={styles.hero__colorBg}></div>

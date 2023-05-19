@@ -1,5 +1,6 @@
 import FilterButton from "./components/homepage/FilterButton";
 import HeroSection from "./components/homepage/HeroSection";
+import RecentUpdates from "./components/homepage/RecentUpdates";
 
 
 export default function Home() {
@@ -7,6 +8,7 @@ export default function Home() {
     <div style={{marginBottom: "1rem"}}>
       <HeroSection />
       <FilterButton />
+      <RecentUpdates />
     </div>
   )
 }

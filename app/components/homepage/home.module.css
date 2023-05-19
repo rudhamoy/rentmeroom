@@ -20,6 +20,7 @@
     left: 0;
     right: 0;
     /* z-index: 10; */
+    /* background-color: rgba(15, 15, 15, 0.4); */
     background-color: rgba(255, 255, 255, 0.5);
 }
 
@@ -65,6 +66,7 @@
     display: flex;
     justify-content: center;
     gap: 10px;
+    margin: 2rem;
 }
 
 .filter__container > button {
@@ -77,4 +79,26 @@
     gap: 5px;
     cursor: pointer;
     box-shadow: 4px 2px 12px rgb(212, 212, 212);
+}
+
+/* RECENT UPDATES */
+
+.recentUpdates__container {
+    margin: 1rem;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+}
+
+.recentUpdates__loadMore {
+    display: flex;
+    justify-content: center;
+}
+
+.recentUpdates__loadMore > button {
+    padding: 0.6rem 2rem;
+    background-color: #393838;
+    color: white;
+    cursor: pointer;
 }
