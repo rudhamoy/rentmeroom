@@ -69,16 +69,27 @@
     margin: 2rem;
 }
 
+.filter__toggle {
+    border: .2px solid gray;
+    display: flex;
+    border-radius: 1.1rem;
+}
+.filter__toggle > button {
+    border: none;
+    border-radius: 1.1rem;
+    cursor: pointer;
+}
+
 .filter__container > button {
     border: 0.2px solid gray;
-    /* border-radius: 1.1rem; */
+    border-radius: 1.1rem;
     padding: 0.4rem 1.2rem;
     background-color: white;
     display: flex;
     align-items: center;
     gap: 5px;
     cursor: pointer;
-    box-shadow: 4px 2px 12px rgb(212, 212, 212);
+    /* box-shadow: 4px 2px 12px rgb(212, 212, 212); */
 }
 
 /* RECENT UPDATES */
