@@ -1,8 +1,9 @@
-
+'use client'
 import Image from 'next/image'
 import { FaFacebookF, FaGoogle } from 'react-icons/fa'
 import backgroundImage from '@/assets/svg/authBG.png'
 import styles from '../auth.module.css'
+import { signIn } from 'next-auth/react'
 
 const SignupPage = () => {
   return (
@@ -25,7 +26,7 @@ const SignupPage = () => {
         </div>
 
         <div className={styles.extraButton}>
-          <button>
+          <button onClick={() => signIn('google')}>
             <FaGoogle />
             <span>Sign up with Google</span>
           </button>
