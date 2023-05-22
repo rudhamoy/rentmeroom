@@ -1,11 +1,24 @@
 'use client'
+import { useEffect } from 'react'
 import Image from 'next/image'
 import { FaFacebookF, FaGoogle } from 'react-icons/fa'
 import backgroundImage from '@/assets/svg/authBG.png'
 import styles from '../auth.module.css'
-import { signIn } from 'next-auth/react'
+import { signIn, useSession } from 'next-auth/react'
+import { useRouter } from 'next/navigation'
 
 const SignupPage = () => {
+  const { data } = useSession()
+
+  const router = useRouter()
+
+  useEffect(() => {
+    if(data?.user) {
+      router.push('/')
+    }
+  }, [])
+
+  
   return (
     <div className={styles.container}>
       {/* left section - info */}
