@@ -1,0 +1,126 @@
+/* HEADER */
+.header__container {
+    border-bottom: 0.2px solid gray;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header__container > div:nth-child(1) {
+    border-right: .2px solid gray;
+    padding: 1rem;
+    flex: .05;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header__container > div:nth-child(3) {
+    border-left: .2px solid gray;
+    padding: 1rem;
+    flex: .2;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.header__container > div:nth-child(3) > button:nth-child(1) {
+    background-color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.header__container > div:nth-child(3) > button:nth-child(2) {
+   background-color: #393838;
+   color: white;
+   padding: 6px 8px;
+   cursor: pointer;
+}
+
+
+.header__middleContent {
+    display: flex;
+    justify-content: space-between;
+    flex: .75;
+    padding: 0 2rem;
+}
+
+.header__middleContent > div {
+    display: flex;
+    align-items: center;
+}
+
+/* FOOTER */
+.footer__container {
+    border-top: 0.2px solid rgb(152, 151, 151);
+}
+
+.footer__quickLinks {
+    display: flex;
+    justify-content: center;
+    padding: 1.5rem 0;
+}
+
+.footer__quickLinks > ul {
+    display: flex;
+    list-style: none;
+    gap: 1.2rem;
+}
+
+.footer__quickLinks > ul > li {
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: #6d6b6b; 
+    font-weight: 600;
+}
+.footer__quickLinks > ul > li:hover {
+    color: black
+}
+
+.footer__para {
+    width: 80%;
+    margin: 2rem 5rem;
+    color: #393838;
+}
+
+.footer__backgroundImg {
+    display: flex;
+    justify-content: center;
+}
+
+.footer__socialLinkContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.footer__socialLinkContainer > p {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.footer__socialLinks {
+    display: flex;
+    align-items: center;
+}
+
+.footer__socialLinks > p {
+    color: gray
+}
+
+.footer__socialLinks > ul {
+    display: flex;
+    list-style: none;
+    gap: 0.5rem;
+}
+
+/* PROFILE NAV */
+.profileNav__image {
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.profileNav__modal {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}

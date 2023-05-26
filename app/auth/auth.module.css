@@ -1,0 +1,60 @@
+
+.container {
+    display: flex;
+}
+
+.container > section {
+    width: 50%;
+    height: 100vh;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container > section:nth-child(2) {
+    background-color: #EDEDED;
+    
+}
+
+.container > section:nth-child(2) > div > input {
+    padding: 10px;
+    outline: none;
+    border-radius: 0.5rem;
+}
+
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 24rem;
+}
+
+.formContainer > button {
+    background: #393838;
+    color: white;
+    border-radius: 8px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.extraButton {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    width: 24rem;
+}
+
+.extraButton > button {
+    background-color: white;
+    border: none;
+    border-radius: 1.5rem;
+    padding: 10px;
+    box-shadow: 6px 4px 10px gray;
+    cursor: pointer;
+}
+
+.extraButton > button > span {
+    font-size: 0.9rem;
+}

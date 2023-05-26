@@ -1,0 +1,115 @@
+
+/* hero */
+.hero__container {
+    position: relative;
+    height: 70vh;
+    background-image: url('../../assets/ujjaynata.jpg');
+    background-repeat: no-repeat; 
+    background-size: cover; 
+    background-position: center;
+    margin: 1rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero__colorBg {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    /* z-index: 10; */
+    /* background-color: rgba(15, 15, 15, 0.4); */
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.hero__searchForm {
+    width: 25rem;
+    padding: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.hero__searchForm > input {
+    padding: 10px;
+    /* border-radius: 6px; */
+    border: none;
+    outline: none;
+    border: 0.2px solid gray;
+}
+
+.hero__searchForm > div {
+    display: flex;
+    gap: 5px;
+}
+.hero__searchForm > div > input {
+    padding: 10px;
+    /* border-radius: 6px; */
+    border: none;
+    width: 100%;
+    outline: none;
+    border: 0.2px solid gray;
+}
+.hero__searchForm > button {
+    /* border-radius: 6px; */
+    padding: 10px;
+    background-color: #393838;
+    color: white;
+    border: none;
+}
+
+/* filter */
+
+.filter__container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 2rem;
+}
+
+.filter__toggle {
+    border: .2px solid gray;
+    display: flex;
+    border-radius: 1.1rem;
+}
+.filter__toggle > button {
+    border: none;
+    border-radius: 1.1rem;
+    cursor: pointer;
+}
+
+.filter__container > button {
+    border: 0.2px solid gray;
+    border-radius: 1.1rem;
+    padding: 0.4rem 1.2rem;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    /* box-shadow: 4px 2px 12px rgb(212, 212, 212); */
+}
+
+/* RECENT UPDATES */
+
+.recentUpdates__container {
+    margin: 1rem;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+}
+
+.recentUpdates__loadMore {
+    display: flex;
+    justify-content: center;
+}
+
+.recentUpdates__loadMore > button {
+    padding: 0.6rem 2rem;
+    background-color: #393838;
+    color: white;
+    cursor: pointer;
+}
