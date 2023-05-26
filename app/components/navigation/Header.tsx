@@ -6,11 +6,12 @@ import { MdFacebook } from 'react-icons/md'
 import { BsInstagram } from 'react-icons/bs'
 import { AiTwotoneHome } from 'react-icons/ai'
 import { useSession } from 'next-auth/react'
-import ProfileNav from './ProfileNav'
+import ProfileMenu from './ProfileMenu'
 
 
 const Header = () => {
   const { data } = useSession()
+ 
   return (
     <div className={styles.header__container}>
       <div>
@@ -30,7 +31,7 @@ const Header = () => {
 
         {data?.user ? (
           <div>
-            <ProfileNav image={`${data?.user.image}`} name={`${data?.user.name}`} email={`${data?.user.email}`} />
+            <ProfileMenu image={`${data?.user.image}`} name={`${data?.user.name}`} email={`${data?.user.email}`} />
           </div>
         ) : (
           <div>

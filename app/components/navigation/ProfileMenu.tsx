@@ -4,6 +4,7 @@ import styles from './navigation.module.css'
 import Image from 'next/image'
 import ModalPortal from '../utils/ModalPortal'
 import { useOutsideClick } from '../utils/hooks/useOutsideClick'
+import { signOut } from 'next-auth/react'
 
 interface ProfileNavProps {
   image: string,
@@ -11,7 +12,7 @@ interface ProfileNavProps {
   email: string,
 }
 
-const ProfileNav: React.FC<ProfileNavProps> = ({ image, name, email }) => {
+const ProfileMenu: React.FC<ProfileNavProps> = ({ image, name, email }) => {
   const [showModal, setShowModal] = useState(false)
 
   const ref = useOutsideClick(() => setShowModal(false))
@@ -25,7 +26,7 @@ const ProfileNav: React.FC<ProfileNavProps> = ({ image, name, email }) => {
             <p>{email}</p>
             <p>{name}</p>
             <p>My Profile</p>
-            <button>Logout</button>
+            <button onClick={() => signOut()}>Logout</button>
           </ModalPortal>
         )}
       </div>
@@ -33,4 +34,4 @@ const ProfileNav: React.FC<ProfileNavProps> = ({ image, name, email }) => {
   )
 }
 
-export default ProfileNav
+export default ProfileMenu
