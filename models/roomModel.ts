@@ -104,6 +104,8 @@ const RoomSchema = new Schema({
         default: Date.now
     }
 
+}, {
+    timestamps: true
 })
 
 export default models?.Room || model("Room", RoomSchema)

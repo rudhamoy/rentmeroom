@@ -31,6 +31,7 @@ const Header = () => {
 
         {data?.user ? (
           <div>
+            <Link href="/rooms/list">Room list</Link>
             <ProfileMenu image={`${data?.user.image}`} name={`${data?.user.name}`} email={`${data?.user.email}`} />
           </div>
         ) : (

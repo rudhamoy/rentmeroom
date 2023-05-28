@@ -1,0 +1,12 @@
+
+
+/* ROOM LIST */
+.roomlist__container {
+    margin: 1rem;
+}
+
+.roomlist__lists {
+    padding-top: 2.2rem;
+    border-top: 0.2px solid lightgrey;
+    height: 50vh;
+}

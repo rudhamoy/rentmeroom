@@ -1,9 +1,32 @@
 
 
 /* room card */
-
 .roomCard__container {
     height: 250px;
     width: 500px;
     border: .2px solid gray;
+}
+
+/* CREATE ROOM */
+.createRoom__container {
+    margin: 2rem 0;
+}
+.createRoom__container > div {
+    padding: 0.8rem;
+    background-color: #A39FFE;
+    border-radius: 0.2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.createRoom__container > div > button {
+    background-color: black ;
+    color: white;
+    padding: 0.6rem;
+    display: flex;
+    gap: 0.2re,;
+    align-items: center;
+    border-radius: 0.2rem;
+    outline: none;
 }
