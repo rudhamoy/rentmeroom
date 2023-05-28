@@ -1,4 +1,4 @@
-import getCurrentUser from "@/services/actions/getCurrentUser"
+import getCurrentUser from "@/actions/getCurrentUser"
 const SigninPage = async () => {
   const currentUser = await getCurrentUser()
   console.log(currentUser)

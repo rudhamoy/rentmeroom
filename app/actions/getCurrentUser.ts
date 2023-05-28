@@ -1,5 +1,5 @@
 import { authOptions } from "@/api/auth/[...nextauth]/route";
-import clientPromise from "@/lib/mongo/mongoDB";
+import clientPromise from '../../lib/mongo/mongoDB'
 import { getServerSession } from "next-auth/next";
 
 export default async function getCurrentUser() {
