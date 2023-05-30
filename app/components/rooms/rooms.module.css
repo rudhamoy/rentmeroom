@@ -30,3 +30,38 @@
     border-radius: 0.2rem;
     outline: none;
 }
+
+/* CREATE ROOM FORM */
+
+.createRoomForm__container {
+    /* padding: .2rem; */
+}
+
+.creatRoomForm__stepOne {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.createRoomForm__buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.2rem;
+}
+
+/* TOGGLE BUTTON */
+
+.toggleButton__container {
+
+}
+
+.toggleButton__btnContainer {
+    border: .2px solid gray;
+    display: flex;
+    border-radius: 1.1rem;
+}
+.toggleButton__btnContainer > button {
+    border: none;
+    border-radius: 1.1rem;
+    cursor: pointer;
+}

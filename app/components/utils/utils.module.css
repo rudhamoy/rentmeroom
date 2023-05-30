@@ -16,3 +16,26 @@
     gap: 1rem;
 }
 
+
+/* MODAL */
+.modal__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0; 
+    z-index: 40;
+    background-color: #00000090;
+}
+
+.modal__body {
+    padding: 2rem;
+    border-radius: 0.2rem;
+    width: 35rem;
+    z-index: 50;
+    position: relative;
+    background-color: white;
+}

@@ -37,55 +37,51 @@ const RoomSchema = new Schema({
             values: ["1R", "1RK", "1BHK", "2R", "2RK", "2BHK", "3BHK"]
         }
     },
-    // bathroomType: {
-    //     type: String,
-    //     required: [true, 'Please select bathroom type'],
-    //     enum: {
-    //         values: ["Attached", "Shared"]
-    //     }
-    // },
+    bathroomType: {
+        type: String,
+        required: [true, 'Please select bathroom type'],
+        enum: {
+            values: ["Attached", "Shared"]
+        }
+    },
     tenants: {
         type: String,
         // required: [true, 'Please enter prefered tenants'],
         enum: {
-            values: ["All", "Students", "Family", "Girls", "Boys", "Bachelor",]
+            values: ["All", "Students", "Family", "Girls", "Boys", "Bachelor"]
         }
     },
-    // electricBill: {
-    //     type: Boolean,
-    //     required: true,
-    //     default: false
-    // },
-    // floor: {
-    //     type: String,
-    //     enum: {
-    //         values: ['Ground Floor', 'First Floor', 'Second Floor', 'Third Floor', 'Fouth Floor', 'Fifth Floor']
-    //     },
-    //     default: 'Ground Floor'
-    // },
-    // balcony: {
-    //     type: Boolean,
-    //     default: false
-    // },
-    // petsFriendly: {
-    //     type: Boolean,
-    //     default: false
-    // },
-    // parking: {
-    //     type: Boolean,
-    //     default: false
-    // },
-    // waterSupply: {
-    //     type: Boolean,
-    //     default: false
-    // },
-    // furnish: {
-    //     type: String,
-    //     enum: {
-    //         values: ['Not Furnished', 'Semi-furnished', 'Furnished']
-    //     },
-    //     default: "Not Furnished"
-    // },
+    electricBill: {
+        type: Boolean,
+        required: true,
+        default: false
+    },
+    floor: {
+        type: String,
+        enum: {
+            values: ['Ground Floor', 'First Floor', 'Second Floor', 'Third Floor', 'Fouth Floor', 'Fifth Floor']
+        },
+        default: 'Ground Floor'
+    },
+    balcony: {
+        type: Boolean,
+        default: false
+    },
+    parking: {
+        type: Boolean,
+        default: false
+    },
+    waterSupply: {
+        type: Boolean,
+        default: false
+    },
+    furnish: {
+        type: String,
+        enum: {
+            values: ['Unfurnished', 'Semi-furnished', 'Furnished']
+        },
+        default: "UnFurnished"
+    },
     // featured: {
     //     type: Boolean,
     //     default: false
@@ -99,10 +95,10 @@ const RoomSchema = new Schema({
         // ref: "User",
         required: false
     },
-    createdAt: {
-        type: Date,
-        default: Date.now
-    }
+    // createdAt: {
+    //     type: Date,
+    //     default: Date.now
+    // }
 
 }, {
     timestamps: true
