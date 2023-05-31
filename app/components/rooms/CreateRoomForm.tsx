@@ -3,6 +3,7 @@ import { useState } from 'react'
 import axios from 'axios'
 import styles from './rooms.module.css'
 import ToggleButton from './ToggleButton';
+import ImageInput, { uploadPhotos } from './ImageInput';
 
 interface CreateRoomFormProps {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>,
@@ -10,8 +11,7 @@ interface CreateRoomFormProps {
 
 const CreateRoomForm: React.FC<CreateRoomFormProps> = ({ setShowModal }) => {
 
-  const [images, setImages] = useState({});
-  const [imagesPreview, setImagesPreview] = useState([])
+  const [images, setImages] = useState();
 
   const [title, setTitle] = useState("")
   const [price, setPrice] = useState<number>(0)
@@ -28,8 +28,6 @@ const CreateRoomForm: React.FC<CreateRoomFormProps> = ({ setShowModal }) => {
   const [furnish, setFurnish] = useState('')
 
   const [loading, setLoading] = useState(false)
-  const [uploadProgress, setUploadProgress] = useState(0)
-  const [imageNum, setImageNum] = useState([])
   const [steps, setSteps] = useState(1)
 
   const postContent = {
@@ -45,9 +43,12 @@ const CreateRoomForm: React.FC<CreateRoomFormProps> = ({ setShowModal }) => {
     parking,
     waterSupply,
     furnish,
+    images
   }
 
-  const submitHandler = () => {
+  const submitHandler = async () => {
+    let allImageUrl = await uploadPhotos()
+    postContent.images = allImageUrl;
     axios.post('/api/rooms', postContent)
   }
 
@@ -110,7 +111,7 @@ const CreateRoomForm: React.FC<CreateRoomFormProps> = ({ setShowModal }) => {
       {/* STEP THREE - UPLOAD IMAGE */}
       {steps === 3 && (
         <div>
-          steps 3
+          <ImageInput />
         </div>
       )}
       <div className={styles.createRoomForm__buttons}>
