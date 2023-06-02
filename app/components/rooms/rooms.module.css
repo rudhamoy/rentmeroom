@@ -11,9 +11,13 @@
 }
 
 .roomCard__imageContainer {
-    width: 50%;
+    width: 16rem;
     border: .1px solid gray;
     border-radius: .1rem;
+}
+
+.roomCard__detailsContainer {
+    width: 15rem;
 }
 
 /* CREATE ROOM */

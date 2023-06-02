@@ -19,7 +19,7 @@ const RoomCard: React.FC<RoomCardProps> = ({room}) => {
 
         </div>
         {/* right - detail  */}
-        <div>
+        <div className={styles.roomCard__detailsContainer}>
           <p>{room.title}</p>
           <p>{room.pricePerMonth}</p>
         </div>
