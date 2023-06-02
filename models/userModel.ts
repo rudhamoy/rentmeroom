@@ -7,14 +7,16 @@ type IUser = {
     avatar?: String,
     userType?: String,
     mobile?: Number,
+
 }
 
 const UserSchema = new Schema({
     name: { type: String },
     email: { type: String },
-    avatar: {type: String},
+    avatar: { type: String },
     userType: { type: String, default: "tenant" },
-    mobile: {type: Number}
-}, {timestamps: true})
+    mobile: { type: Number },
+    favorites: [{ roomId: Schema.Types.ObjectId }],
+}, { timestamps: true })
 
 export default models?.User || model("User", UserSchema)

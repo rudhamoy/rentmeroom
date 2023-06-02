@@ -50,11 +50,21 @@
     background-color: white;
     border: none;
     border-radius: 1.5rem;
-    padding: 10px;
+    padding: 12px 12px 12px 12px;
     box-shadow: 6px 4px 10px gray;
     cursor: pointer;
+    display: flex;
+    flex-direction: row;
+}
+.extraButton > button > * {
+    justify-self: center;
+}
+.extraButton  :hover {
+    background-color: grey;
+    color: white;
 }
 
 .extraButton > button > span {
     font-size: 0.9rem;
+    padding: 0 4px 0 4px;
 }

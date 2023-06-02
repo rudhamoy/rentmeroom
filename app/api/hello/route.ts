@@ -1,12 +1,11 @@
-import { NextResponse } from "next/server"
-import clientPromise from "../../../lib/mongo/mongoDB"
+import { NextResponse } from "next/server";
+import createUser from "@/services/models/user";
 
-export async function GET() {
-    const client = await clientPromise
-    const db = await client.db()
-    const users = db.collection('users')
-    const allUser = await users.find()
-    return NextResponse.json({
-        allUser
-    })
+export async function GET(request: Request) {
+    try {
+        let user = await createUser({ name: "Testing name", email: "testing@test.com", password: "Hey Password" });
+        return NextResponse.json(user);
+    } catch (err) {
+        return new Response(JSON.stringify(await err), { status: 400 });
+    }
 }
