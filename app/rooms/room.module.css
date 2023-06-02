@@ -8,5 +8,11 @@
 .roomlist__lists {
     padding-top: 2.2rem;
     border-top: 0.2px solid lightgrey;
-    height: 50vh;
+}
+
+.roomlist__lists > div > div {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: .8rem;
 }
