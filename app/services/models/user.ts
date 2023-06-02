@@ -1,6 +1,6 @@
 
-import conn from "@/services/connection/database";
 import { Schema } from "mongoose";
+import conn from "../database_connection";
 
 
 
