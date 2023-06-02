@@ -18,9 +18,9 @@ const RecentUpdates = () => {
             className={styles.recentUpdates__container}
             style={{flexDirection: `${switchView !== 'listView' ? "column" : "row"}`}}
             >
-                {myArray.splice(0, 4).map((i, index) => (
+                {/* {myArray.splice(0, 4).map((i, index) => (
                     <RoomCard key={index} />
-                ))}
+                ))} */}
             </div>
             <div className={styles.recentUpdates__loadMore}>
                 <button>Load More</button>

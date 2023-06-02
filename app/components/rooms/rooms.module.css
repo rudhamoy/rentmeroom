@@ -2,9 +2,18 @@
 
 /* room card */
 .roomCard__container {
-    height: 250px;
-    width: 500px;
+    height: 12.5rem;
+    width: 32rem;
     border: .2px solid gray;
+    padding: 0.2rem;
+    display: flex;
+    gap: .4rem;
+}
+
+.roomCard__imageContainer {
+    width: 50%;
+    border: .1px solid gray;
+    border-radius: .1rem;
 }
 
 /* CREATE ROOM */
