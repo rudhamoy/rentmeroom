@@ -8,15 +8,15 @@ import { signIn, useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
 
 const SignupPage = () => {
-  const { data } = useSession()
+  // const { data } = useSession()
 
-  const router = useRouter()
+  // const router = useRouter()
 
-  useEffect(() => {
-    if(data?.user) {
-      router.push('/')
-    }
-  }, [])
+  // useEffect(() => {
+  //   if(data?.user) {
+  //     router.push('/')
+  //   }
+  // }, [])
 
   
   return (

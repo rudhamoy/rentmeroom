@@ -1,16 +1,19 @@
-'use client'
+// 'use client'
 import Link from 'next/link'
 import styles from './navigation.module.css'
 import { GiHamburgerMenu } from 'react-icons/gi'
 import { MdFacebook } from 'react-icons/md'
 import { BsInstagram } from 'react-icons/bs'
 import { AiTwotoneHome } from 'react-icons/ai'
-import { useSession } from 'next-auth/react'
+// import { useSession } from 'next-auth/react'
 import ProfileMenu from './ProfileMenu'
+import { getServerSession } from 'next-auth/next'
+import { authOptions } from '@/api/auth/[...nextauth]/route'
 
 
-const Header = () => {
-  const { data } = useSession()
+const Header = async () => {
+  // const { data } = useSession()
+  const session = await getServerSession(authOptions)
  
   return (
     <div className={styles.header__container}>
@@ -29,10 +32,10 @@ const Header = () => {
         </div>
       </div>
 
-        {data?.user ? (
+        {session?.user ? (
           <div>
             <Link href="/rooms/list">Room list</Link>
-            <ProfileMenu image={`${data?.user.image}`} name={`${data?.user.name}`} email={`${data?.user.email}`} />
+            <ProfileMenu image={`${session?.user.image}`} name={`${session?.user.name}`} email={`${session?.user.email}`} />
           </div>
         ) : (
           <div>

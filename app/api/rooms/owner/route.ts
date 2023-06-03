@@ -1,23 +1,10 @@
 import { NextResponse } from "next/server";
-import clientPromise from "../../../../lib/mongo/mongoDB";
-import getCurrentUser from "@/actions/getCurrentUser";
-import { ObjectId } from "mongodb";
+import { myRooms } from "../../../../services/controllers/roomControllers";
 
-export async function GET() {
-    const currentUser = await getCurrentUser()
+export async function POST(request: Request) {
+  const body = await request.json()
 
-    const client = await clientPromise
-    const db = await client.db()
-
-    const rooms = await db.collection('rooms')
-    // new ObjectId('6470e0a2337255814f86d25a')
-    const getOwnerRooms = await rooms.find({userId: currentUser._id}).toArray((error, documents) => {
-        if (error) {
-          console.error('Error retrieving documents:', error);
-          return;
-        }
-              console.log('Retrieved documents:', documents);
-      });
-
-    return NextResponse.json(getOwnerRooms)
+    // '647a3ca14f4d5cdf19231819'
+  const allOwnerRooms = await myRooms(body._id)
+  return NextResponse.json(allOwnerRooms)
 }
