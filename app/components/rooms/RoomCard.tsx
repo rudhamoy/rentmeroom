@@ -1,3 +1,5 @@
+
+import Link from 'next/link'
 import styles from './rooms.module.css'
 import Image from 'next/image';
 
@@ -20,7 +22,7 @@ const RoomCard: React.FC<RoomCardProps> = ({room}) => {
         </div>
         {/* right - detail  */}
         <div className={styles.roomCard__detailsContainer}>
-          <p>{room.title}</p>
+          <Link href={`/rooms/list/${room._id}`}>{room.title}</Link>
           <p>{room.pricePerMonth}</p>
         </div>
     </div>

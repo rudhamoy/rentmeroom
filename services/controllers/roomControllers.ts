@@ -1,6 +1,7 @@
 import { ObjectId } from "mongodb";
 import { roomModel } from "../models/roomModel";
 
+// create room
 export async function createRoom(data: any) {
     const doc = new roomModel({ 
         title: data.title,
@@ -32,9 +33,16 @@ export async function createRoom(data: any) {
 
 }
 
-export async function myRooms (userId: any) {
+// get a single room - room details
+export async function roomDetails(roomId: string) {
+    const room = await roomModel.findById({_id: roomId})
+    return room
+}
+
+
+// fetch the list of owner's room
+export async function ownerRooms(userId: any) {
     const rooms = await roomModel.find({ userId: new ObjectId(userId) })
     return rooms
 }
 
-// FMPP1702394494
