@@ -18,6 +18,20 @@
 
 .roomCard__detailsContainer {
     width: 15rem;
+    position: relative;
+}
+
+.roomCard__actionModal {
+    position: absolute;
+    right: 0;
+    z-index: 50;
+    background-color: white;
+    border: .1px solid grey;
+    padding: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    box-shadow: 4px 2px 12px rgb(212, 212, 212);
 }
 
 /* CREATE ROOM */

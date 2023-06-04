@@ -46,3 +46,8 @@ export async function ownerRooms(userId: any) {
     return rooms
 }
 
+export async function deleteRoom(roomId: string) {
+    const deletedRoom = await roomModel.deleteOne({_id: roomId})
+    return deletedRoom
+}
+

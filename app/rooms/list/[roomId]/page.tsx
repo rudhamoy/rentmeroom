@@ -1,5 +1,6 @@
 
 import axios from 'axios'
+import styles from '../../room.module.css'
 
 async function getRoomDetails(slug: string) {
   const res = await axios.get(`http://localhost:3000/api/rooms/${slug}`)
@@ -12,7 +13,13 @@ const RoomDetailPage = async ({params} : {params: { roomId : string}}) => {
   console.log(data)
    
   return (
-    <div>RoomDetailPage</div>
+    <div className={styles.roomDetail__container}>
+      <div></div>
+      <div>
+        <p>{data.title}</p>
+        <p>{data.pricePerMonth}</p>
+      </div>
+    </div>
   )
 }
 
