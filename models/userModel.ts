@@ -16,7 +16,6 @@ const UserSchema = new Schema({
     avatar: { type: String },
     userType: { type: String, default: "tenant" },
     mobile: { type: Number },
-    favorites: [{ roomId: Schema.Types.ObjectId }],
 }, { timestamps: true })
 
 export default models?.User || model("User", UserSchema)

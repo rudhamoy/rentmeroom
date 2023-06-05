@@ -4,34 +4,11 @@ import conn from "../database_connection";
 
 
 
-
-
-// type IUser = {
-//     name: String,
-//     email: String,
-//     avatar?: String,
-//     userType?: String,
-//     mobile?: Number,
-
-// }
-
-// const UserSchema = new Schema({
-//     name: { type: String },
-//     email: { type: String },
-//     avatar: { type: String },
-//     userType: { type: String, default: "tenant" },
-//     mobile: { type: Number },
-//     favorites: [{ roomId: Schema.Types.ObjectId }],
-// }, { timestamps: true })
-
-
-
 type IUser = {
     name: String,
     email: String,
     password: String,
     userType?: String,
-    favorites?: [],
 
 }
 
@@ -41,7 +18,6 @@ const userSchema = new Schema({
     email: { type: String, required: true },
     password: { type: String },
     userType: { type: String },
-    favorites: [],
 })
 
 
