@@ -1,5 +1,5 @@
 
-import { Schema, Types, model, Model } from "mongoose";
+import { Schema, Types, Model } from "mongoose";
 import conn from "../database_connection";
 
 
