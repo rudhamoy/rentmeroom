@@ -35,7 +35,7 @@ tenantShema.method('fullName', function () {
 });
 
 
-const Tenant = conn.model<ITenant>('Tenant', tenantShema);
+export const Tenant = conn.model<ITenant>('Tenant', tenantShema);
 
 export const createTenant = async (data: ITenant) => {
     const doc = new Tenant({ userId: data.userId, firstName: data.firstName, lastName: data.lastName, mobile: data.mobile, tenantType: data.tenantType, prefferedLocaton: data.prefferedLocaton, prefferedPrice: data.prefferedPrice });
