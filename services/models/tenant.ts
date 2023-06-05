@@ -3,7 +3,7 @@ import { Schema, Types, Model } from "mongoose";
 import conn from "../database_connection";
 
 
-interface ITenant {
+export interface ITenant {
     userId: Types.ObjectId;
     firstName: string;
     lastName: string;
