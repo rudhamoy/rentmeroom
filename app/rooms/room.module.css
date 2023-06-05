@@ -16,3 +16,20 @@
     flex-wrap: wrap;
     gap: .8rem;
 }
+
+
+/* Room Detail page */
+
+.roomDetail__container {
+    display: flex;
+    gap: 5rem;
+    justify-content: center;
+    margin: 2rem;
+}
+
+.roomDetail__container > div:nth-child(1) {
+    border: .1px solid gray;
+    height: 20rem;
+    width: 30rem;
+}
+

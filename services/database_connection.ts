@@ -5,6 +5,6 @@ const options = {
 };
 
 
-const conn = mongoose.createConnection("mongodb+srv://nikhilesh:4PHF4U81UbbaFvHZ@cluster0.a5brsvj.mongodb.net/?retryWrites=true&w=majority", options);
+const conn = mongoose.createConnection(process.env.MONGODB_URL);
 
 export default conn

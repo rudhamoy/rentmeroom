@@ -22,7 +22,7 @@ const userSchema = new Schema({
 
 
 
-const userModel = conn.model<IUser>('users', userSchema);
+const userModel = conn.model<IUser>('Users', userSchema);
 
 export default async function createUser(data: any) {
     const doc = new userModel({ name: data.name, email: data.email, password: data.password });

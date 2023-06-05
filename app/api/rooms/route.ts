@@ -1,19 +1,16 @@
 import getCurrentUser from "@/actions/getCurrentUser"
 import { NextResponse } from "next/server"
-import clientPromise from "../../../lib/mongo/mongoDB";
+import { createRoom } from "../../../services/controllers/roomControllers"
 
-export async function POST(request:Request) {
+
+export async function POST(request: Request) {
 
     const currentUser = await getCurrentUser()
 
-    const client = await clientPromise
-    const db = await client.db()
-    const rooms = await db.collection('rooms')
+    const body = await request.json()
+    body.userId = currentUser._id
+    const room = await createRoom({ ...body })
 
-   const body = await request.json()
-   body.userId = currentUser._id
-   const room = await rooms.insertOne({...body})
-
-   return NextResponse.json({ room })
+    return NextResponse.json({ room })
 }
 
