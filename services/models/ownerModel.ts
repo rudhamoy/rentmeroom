@@ -17,14 +17,12 @@ const OwnerModel = new Schema({
         required: [true, 'Please enter your mobile name'],
         minLength: [10, 'Mobile number cannot be less than 10 digits']
     },
-   address: {
-        type: String,
-        required: [true, 'Please enter your address']
-    },
-    pincode: {
-        type: Number,
-        required: true
-    },
+   address: [
+    {
+        type: Schema.Types.ObjectId,
+        ref: 'addresses',
+    }
+   ],
     userId: {
         type: Schema.Types.ObjectId,
         ref: "users",
