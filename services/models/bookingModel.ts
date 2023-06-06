@@ -14,5 +14,7 @@ const bookingSchema = new Schema<IBooking>({
     roomID: { type: Schema.Types.ObjectId, required: true }
 }, { timestamps: true });
 
+bookingSchema.index({ userID: 1, roomID: 1 }, { unique: true });
+
 
 export const BookingModel = conn.model<IBooking>('Booking', bookingSchema);
