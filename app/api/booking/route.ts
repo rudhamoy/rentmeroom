@@ -12,7 +12,7 @@ export async function GET(request: Request) {
 export async function POST(request: Request) {
     const bodyData = await request.json();
     const currentUser = await getCurrentUser();
-    bodyData.userID = currentUser._id;
+    // bodyData.userID = currentUser._id;
     const res = await createBooking({ ...bodyData })
     return new NextResponse(JSON.stringify(res));
 }
