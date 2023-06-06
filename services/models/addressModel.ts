@@ -24,27 +24,12 @@ const AddressModel = new Schema({
     },
     landMarks: {
         type: String
+    },
+    userId: {
+        type: Schema.Types.ObjectId,
+        ref: 'users'
     }
 })
 
 export const addressModel = conn.model('addresses', AddressModel)
 
-export async function createAddress(data: any) {
-    const doc = new addressModel({ 
-        pincode: data.pincode,
-        address: data.address,
-        coordinates: data.coordinates,
-        landMarks: data.landMarks
-     });
-    try {
-        const response = await doc.save();
-        return response;
-    } catch (err: any) {
-        var errorFields = Object.keys(err.errors);
-        var message: any = {}
-        errorFields.map(item => {
-            message[item] = err.errors[item];
-        })
-        return Promise.reject(message);
-    }
-}

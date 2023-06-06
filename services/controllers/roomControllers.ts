@@ -7,6 +7,7 @@ export async function createRoom(data: any) {
         title: data.title,
         pricePerMonth: data.pricePerMonth,
         description: data.description,
+        address: data.address,
         images: data.images,
         roomCategory: data.roomCategory,
         bathroomType: data.bathroomType,

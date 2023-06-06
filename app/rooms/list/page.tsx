@@ -35,7 +35,6 @@ const RoomListPage = async () => {
 
   const numberOfRooms = data?.length || 0
 
-
   return (
     <>
       <div className={styles.roomlist__container}>

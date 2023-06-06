@@ -17,14 +17,9 @@ const RoomSchema = new Schema({
     description: {
         type: String,
     },
-    // address: {
-    //     type: String,
-    //     required: [true, 'Please enter room address']
-    // },
-    // pincode: {
-    //     type: Number,
-    //     required: true
-    // },
+    address: {
+        type: Schema.Types.ObjectId,
+    },
     images: [
         {
             type: String,
@@ -96,11 +91,6 @@ const RoomSchema = new Schema({
         ref: "users",
         required: false
     },
-    // createdAt: {
-    //     type: Date,
-    //     default: Date.now
-    // }
-
 }, {
     timestamps: true
 })

@@ -1,6 +1,7 @@
 'use client'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import axios from 'axios'
+
 import styles from './rooms.module.css'
 import ToggleButton from './ToggleButton';
 import ImageInput, { uploadPhotos } from './ImageInput';
@@ -26,14 +27,30 @@ const CreateRoomForm: React.FC<CreateRoomFormProps> = ({ setShowModal }) => {
   const [parking, setParking] = useState(false)
   const [waterSupply, setWaterSupply] = useState(false);
   const [furnish, setFurnish] = useState('')
+  const [address, setAddress] = useState('')
+
+  const [addressList, setAddressList] = useState([])
 
   const [loading, setLoading] = useState(false)
   const [steps, setSteps] = useState(1)
+
+  async function getOwnerAddress() {
+    const res = await axios.post('/api/address/owner')
+    setAddressList(res.data)
+    return res.data
+  }
+
+  useEffect(() => {
+    getOwnerAddress()
+  }, [])
+
+  console.log(addressList)
 
   const postContent = {
     title,
     pricePerMonth: price,
     description,
+    address,
     roomCategory,
     tenants,
     floor,
@@ -111,6 +128,14 @@ const CreateRoomForm: React.FC<CreateRoomFormProps> = ({ setShowModal }) => {
       {/* STEP THREE - UPLOAD IMAGE */}
       {steps === 3 && (
         <div>
+          <select onChange={(e) => setAddress(e.target.value)}>
+            {addressList.map((place) => (
+              <>
+              <option value="select">Select address</option>
+              <option key={place?._id} value={place?._id}>{place?.address}</option>
+              </>
+            ))}
+          </select>
           <ImageInput />
         </div>
       )}

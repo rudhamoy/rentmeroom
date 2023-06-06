@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { createOwner } from "../../../../services/models/ownerModel";
+import { createOwner } from "../../../../services/controllers/ownerController";
 import getCurrentUser from "@/actions/getCurrentUser"
 
 
