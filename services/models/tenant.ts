@@ -1,54 +1,33 @@
 
-import { Schema, Types, model, Model } from "mongoose";
+import { Schema, Types, Model } from "mongoose";
 import conn from "../database_connection";
 
 
-interface ITenant {
+export interface ITenant {
     userId: Types.ObjectId;
     firstName: string;
     lastName: string;
-    mobile: number;
+    mobile?: number;
     tenantType?: string;
     prefferedPrice?: number;
     prefferedLocaton?: string;
-    // favouriteProperty?: Types.DocumentArray<Rooom>; we will implement it later
 }
 
-interface ITenantMethods {
-    fullName(): string;
-}
 
-type TenantModel = Model<ITenant, {}, ITenantMethods>;
 
-const tenantShema = new Schema<ITenant, TenantModel, ITenantMethods>({
-    userId: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+
+
+const tenantShema = new Schema<ITenant>({
+    userId: { type: Schema.Types.ObjectId, ref: 'users', required: true, unique: true },
     firstName: { type: String, required: true },
     lastName: { type: String, required: true },
-    mobile: { type: Number, required: true },
-    tenantType: { type: String, required: true },
-    prefferedPrice: { type: Number, required: false },
+    mobile: { type: Number },
+    tenantType: { type: String },
+    prefferedPrice: { type: Number },
 }, { timestamps: true });
 
 
-tenantShema.method('fullName', function () {
-    return this.firstName + ' ' + this.lastName;
-});
 
 
-const Tenant = conn.model<ITenant>('Tenant', tenantShema);
+export const Tenant = conn.model<ITenant>('Tenant', tenantShema);
 
-export const createTenant = async (data: ITenant) => {
-    const doc = new Tenant({ userId: data.userId, firstName: data.firstName, lastName: data.lastName, mobile: data.mobile, tenantType: data.tenantType, prefferedLocaton: data.prefferedLocaton, prefferedPrice: data.prefferedPrice });
-    try {
-        const response = await doc.save();
-        return response;
-    } catch (err: any) {
-        var errorFields = Object.keys(err.errors);
-        var message: any = {}
-        errorFields.map(item => {
-            message[item] = err.errors[item];
-        })
-        return Promise.reject(message);
-    }
-
-} 
