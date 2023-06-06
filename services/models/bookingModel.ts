@@ -10,11 +10,9 @@ interface IBooking {
 
 
 const bookingSchema = new Schema<IBooking>({
-    userID: { type: Schema.Types.ObjectId, required: true },
-    roomID: { type: Schema.Types.ObjectId, required: true }
+    userID: { type: Schema.Types.ObjectId, required: true, ref: "users" },
+    roomID: { type: Schema.Types.ObjectId, required: true, ref: "rooms" }
 }, { timestamps: true });
-
-bookingSchema.index({ userID: 1, roomID: 1 }, { unique: true });
 
 
 export const BookingModel = conn.model<IBooking>('Booking', bookingSchema);

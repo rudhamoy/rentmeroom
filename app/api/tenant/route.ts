@@ -24,5 +24,4 @@ export async function GET(request: Request) {
     } catch (err) {
         return new NextResponse("Tenant not found!");
     }
-
 }

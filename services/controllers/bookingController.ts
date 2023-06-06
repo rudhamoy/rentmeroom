@@ -7,3 +7,7 @@ export async function createBooking(data: any) {
     return response;
 }
 
+export async function getBooking(data: any) {
+    const response = await BookingModel.find({ userID: data })
+    return response
+}
