@@ -2,7 +2,8 @@
 
 /* ROOM LIST */
 .roomlist__container {
-    margin: 1rem;
+    margin: 2.5rem;
+    margin-top: 8rem;
 }
 
 .roomlist__lists {

@@ -4,7 +4,7 @@
     position: relative;
     height: 65vh;
     margin: 2.5rem;
-    margin-top: 10rem;
+    margin-top: 15rem;
     background-color: #7E9BBF;
     display: flex;
     justify-content: flex-start;
@@ -62,7 +62,7 @@
 .filter__container {
     display: flex;
     margin: 2.5rem;
-    border: 0.1px solid rgb(230, 230, 230);
+    border: 0.1px solid rgb(209, 209, 209);
     border-radius: 2rem;
     overflow: hidden;
     /* padding: 4px; */
@@ -73,7 +73,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-right: 0.1px solid rgb(230, 230, 230);
+    border-right: 0.1px solid rgb(209, 209, 209);
     padding: 4px;
     background-color: white;
 }
