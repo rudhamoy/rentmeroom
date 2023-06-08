@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from './home.module.css'
 import { BsFilter } from 'react-icons/bs'
+import { BiSearch } from 'react-icons/bi'
 
 interface FilterProps {
   switchView: string;
@@ -19,31 +20,19 @@ const FilterButton:React.FC<FilterProps> = ({switchView, setSwitchView}) => {
 
   return (
     <div className={styles.filter__container}>
-      
-      <div className={styles.filter__toggle}>
-        <button
-          onClick={() => switchViewHandler('listView')}
-          style={{ 
-            backgroundColor: `${switchView === 'listView' ? "black" : "white"}`, 
-            color: `${switchView === 'listView' ? "white" : "black"}`
-          }}
-        >List View</button>
-        <button
-          onClick={() => switchViewHandler('mapView')}
-          style={{ 
-            backgroundColor: `${switchView === 'mapView' ? "black" : "white"}`, 
-            color: `${switchView === 'mapView' ? "white" : "black"}`
-          }}
-        >Map View</button>
+      <div>
+        <BiSearch  style={{color: "GrayText", fontSize: "1.8rem", background: "lightgrey", borderRadius: "50%", padding: ".7rem"}}/>
+        <input placeholder='Search home via place, area, pincode' />
       </div>
-
-      <button><span>Sort</span> <BsFilter /></button>
-      <button><span>Price</span> <BsFilter /></button>
-      <button><span>Range Area</span> <BsFilter /></button>
-      <button><span>Bedroom</span> <BsFilter /></button>
-      <button><span>Bathroom</span> <BsFilter /></button>
-      <button><span>Floor</span> <BsFilter /></button>
-      <button><span>Parking</span> <BsFilter /></button>
+      <div>
+      <div><span>Sort</span> <BsFilter /></div>
+      <div><span>Price</span> <BsFilter /></div>
+      <div><span>Range Area</span> <BsFilter /></div>
+      <div><span>Bedroom</span> <BsFilter /></div>
+      <div><span>Bathroom</span> <BsFilter /></div>
+      <div><span>Floor</span> <BsFilter /></div>
+      <div><span>Parking</span> <BsFilter /></div>
+      </div>
     </div>
   )
 }

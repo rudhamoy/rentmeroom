@@ -7,10 +7,12 @@ export async function POST(request: Request) {
 
     const currentUser = await getCurrentUser()
 
-    const body = await request.json()
-    body.userId = currentUser._id
-    const room = await createRoom({ ...body })
 
-    return NextResponse.json({ room })
+    const body = await request.json()
+    let userId = currentUser._id
+    body.userId = userId.toString()
+    console.log("create room = ", body)
+    const room = await createRoom({ ...body })
+    return NextResponse.json(room)
 }
 

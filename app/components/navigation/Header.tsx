@@ -5,6 +5,7 @@ import { GiHamburgerMenu } from 'react-icons/gi'
 import { MdFacebook } from 'react-icons/md'
 import { BsInstagram } from 'react-icons/bs'
 import { AiTwotoneHome } from 'react-icons/ai'
+import { RiNotificationLine } from 'react-icons/ri'
 // import { useSession } from 'next-auth/react'
 import ProfileMenu from './ProfileMenu'
 import { getServerSession } from 'next-auth/next'
@@ -34,7 +35,8 @@ const Header = async () => {
 
         {session?.user ? (
           <div>
-            <Link href="/rooms/list">Room list</Link>
+            {/* <Link href="/rooms/list">Room list</Link> */}
+            <RiNotificationLine style={{fontSize: "1.7rem"}} />
             <ProfileMenu image={`${session?.user.image}`} name={`${session?.user.name}`} email={`${session?.user.email}`} />
           </div>
         ) : (

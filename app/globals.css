@@ -2,3 +2,7 @@
     margin: 0;
     font-size: 15px;
 }
+
+body {
+    background-color: rgba(241, 241, 241, 0.451);
+}

@@ -19,14 +19,14 @@ const CreateRoomForm: React.FC<CreateRoomFormProps> = ({ setShowModal }) => {
   const [description, setDescription] = useState("Some description here")
   const [roomCategory, setRoomCategory] = useState('1RK')
   const [tenants, setTenants] = useState('All')
-  const [floor, setFloor] = useState('');
+  const [floor, setFloor] = useState('Ground Floor');
 
   const [bathroom, setBathroom] = useState(false)
   const [electricBill, setElectricBill] = useState(false);
   const [balcony, setBalcony] = useState(false)
   const [parking, setParking] = useState(false)
   const [waterSupply, setWaterSupply] = useState(false);
-  const [furnish, setFurnish] = useState('')
+  const [furnish, setFurnish] = useState('Unfurnished')
   const [address, setAddress] = useState('')
 
   const [addressList, setAddressList] = useState([])
