@@ -5,7 +5,6 @@
     display: flex;
     justify-content: space-between;
     margin: .6rem 2.5rem;
-    background-color: white;
     backdrop-filter: blur(10px);
     background-color: rgba(160, 160, 160, 0.5);
     position: fixed;
@@ -15,7 +14,7 @@
 }
 
 /* left most */
-.header__container>div:nth-child(1) {
+.header__leftContainer {
     border-right: 0.1px solid rgb(230, 230, 230);
     padding: 1rem;
     flex: .05;
@@ -25,7 +24,7 @@
 }
 
 /* right most */
-.header__container>div:nth-child(3) {
+.header__rightContainer {
     border-left: 0.1px solid rgb(230, 230, 230);
     padding: 1rem;
     flex: .2;
@@ -34,13 +33,13 @@
     align-items: center;
 }
 
-.header__container>div:nth-child(3)>button:nth-child(1) {
+.header__rightContainer > button:nth-child(1) {
     background-color: white;
     border: none;
     cursor: pointer;
 }
 
-.header__container>div:nth-child(3)>button:nth-child(2) {
+.header__rightContainer > button:nth-child(2) {
     background-color: #393838;
     color: white;
     padding: 6px 8px;

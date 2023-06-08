@@ -2,9 +2,9 @@
 /* hero */
 .hero__container {
     position: relative;
-    height: 65vh;
+    height: 60vh;
     margin: 2.5rem;
-    margin-top: 15rem;
+    margin-top: 11.4rem;
     background-color: #7E9BBF;
     display: flex;
     justify-content: flex-start;
@@ -18,11 +18,11 @@
     bottom: 0;
     left: 0;
     right: 0;
-    height: 90vh;
+    height: 85vh;
     background-image: url('../../assets/placebg.png');
     background-repeat: no-repeat; 
     background-size: cover; 
-    background-position: center;
+    background-position: top;
     border-radius: .8rem;
 }
 
@@ -68,6 +68,7 @@
     /* padding: 4px; */
 }
 
+/* search */
 .filter__container > div:nth-child(1) {
     width: 40%;
     display: flex;
@@ -78,6 +79,7 @@
     background-color: white;
 }
 
+/* search input */
 .filter__container > div:nth-child(1) > input {
     width: 90%;
     border: none;
@@ -86,6 +88,7 @@
     /* background-color: rgba(241, 241, 241, 0.451); */
 }
 
+/* filter and sort buttons */
 .filter__container > div:nth-child(2) {
     width: 60%;
     display: flex;

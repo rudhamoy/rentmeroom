@@ -21,7 +21,16 @@ const FilterButton:React.FC<FilterProps> = ({switchView, setSwitchView}) => {
   return (
     <div className={styles.filter__container}>
       <div>
-        <BiSearch  style={{color: "GrayText", fontSize: "1.8rem", background: "lightgrey", borderRadius: "50%", padding: ".7rem"}}/>
+        <BiSearch 
+        style={{
+          color: "GrayText", 
+          fontSize: "1.8rem", 
+          background: "lightgrey", 
+          borderRadius: "50%", 
+          padding: ".7rem",
+          cursor: "pointer"
+        }}
+        />
         <input placeholder='Search home via place, area, pincode' />
       </div>
       <div>
