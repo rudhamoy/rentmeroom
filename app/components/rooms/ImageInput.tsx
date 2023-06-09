@@ -33,6 +33,11 @@ const ImageInput = () => {
         })
     }
 
+    /**
+     * upload image to firebase database and get the url of the image
+     */
+
+    // Helper function
       imageUploadHandler = async (image) => {
         return new Promise((resolve, reject) => {
             const storage = getStorage(app)
@@ -60,6 +65,11 @@ const ImageInput = () => {
         
     }
 
+    /**
+     * hide the image input  but
+     * when click on the container
+     * trigger the input
+     */
     const onSelectImageHandler = () => {
         imageRef.current.click();
     };

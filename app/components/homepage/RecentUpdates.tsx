@@ -9,6 +9,7 @@ const RecentUpdates = () => {
     const [switchView, setSwitchView] = useState('listView');
     const [newRooms, setNewRooms ] = useState([])
 
+    // fetch room list
     async function getNewRooms() {
         const res = await axios.get('/api/rooms')
         setNewRooms(res.data)

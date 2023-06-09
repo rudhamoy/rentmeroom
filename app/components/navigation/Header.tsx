@@ -12,6 +12,7 @@ import { authOptions } from '@/api/auth/[...nextauth]/route'
 
 
 const Header = async () => {
+  // get current login user
   const session = await getServerSession(authOptions)
 
   return (

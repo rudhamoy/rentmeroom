@@ -8,6 +8,7 @@ export async function POST(request: Request) {
 
     const body = await request.json()
     body.userId = currentUser._id
+    
     const address = await createAddress({...body})
     return NextResponse.json({ address })
 }

@@ -18,6 +18,7 @@ const CreateOwner = () => {
       coordinates: newPlace
     }
 
+    // function to submit the form
     const submitHandler = async () => {
       const address = axios.post('/api/address', addressData).then(({data}) => {
         console.log(data)
@@ -30,8 +31,6 @@ const CreateOwner = () => {
         })
         
     }
-
-    console.log(newPlace)
 
   return (
     <div style={{display: 'flex', flexDirection: "column", gap: '1rem', width: "30rem", margin: "5rem"}}>

@@ -2,12 +2,13 @@
 import Link from 'next/link'
 import styles from './rooms.module.css'
 import Image from 'next/image';
-import { BsThreeDots } from 'react-icons/bs'
+import { BsThreeDots, BsBookmarks } from 'react-icons/bs'
 import { MdLocationOn } from 'react-icons/md'
 import { HiHome } from 'react-icons/hi'
 import { MdPeopleAlt } from 'react-icons/md'
 import { useState } from 'react'
 import axios from 'axios'
+import { usePathname } from 'next/navigation';
 
 interface RoomCardProps {
   room: {
@@ -23,7 +24,9 @@ interface RoomCardProps {
 const RoomCard: React.FC<RoomCardProps> = ({ room }) => {
 
   const [showAction, setShowAction] = useState(false)
+  const pathname = usePathname()
   
+  // helper function to show modal - edit/delete modal
   function onClickHandler() {
     setShowAction(!showAction)
   }
@@ -40,7 +43,12 @@ const RoomCard: React.FC<RoomCardProps> = ({ room }) => {
       </div>
       {/* right - detail  */}
       <div className={styles.roomCard__detailsContainer}>
-        <BsThreeDots onClick={onClickHandler} style={{ position: "absolute", right: 2, top: 1, cursor: "pointer" }} />
+        
+        {pathname === "/rooms/list" ? (
+          <BsThreeDots onClick={onClickHandler} style={{ position: "absolute", right: 2, top: 1, cursor: "pointer" }} />
+        ) : (
+          <BsBookmarks style={{ position: "absolute", right: 1, top: 1, cursor: "pointer" }} />
+        )}
 
         {showAction && (
           <div className={styles.roomCard__actionModal} style={{top: 20}}>
@@ -49,7 +57,7 @@ const RoomCard: React.FC<RoomCardProps> = ({ room }) => {
           </div>
         )}
 
-        <div style={{marginTop: '0.9rem'}}>
+        <div style={{marginTop: '1rem'}}>
           <Link href={`/rooms/list/${room._id}`} className={styles.roomCard__title}>{room.title}</Link>
           <p>₹ {room.pricePerMonth}</p>
 

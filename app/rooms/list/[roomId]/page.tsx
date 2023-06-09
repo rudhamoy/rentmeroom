@@ -10,7 +10,6 @@ async function getRoomDetails(slug: string) {
 const RoomDetailPage = async ({params} : {params: { roomId : string}}) => {
 
   const data = await getRoomDetails(params.roomId)
-  console.log(data)
    
   return (
     <div className={styles.roomDetail__container}>

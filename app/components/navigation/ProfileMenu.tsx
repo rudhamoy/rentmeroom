@@ -15,7 +15,7 @@ interface ProfileNavProps {
 const ProfileMenu: React.FC<ProfileNavProps> = ({ image, name, email }) => {
   const [showModal, setShowModal] = useState(false)
 
-  const ref = useOutsideClick(() => setShowModal(false))
+  const ref = useOutsideClick(() => setShowModal(false)) // hooks to close modal when click outside of modal box
 
   return (
     <div className={styles.profileNav__Container}>
