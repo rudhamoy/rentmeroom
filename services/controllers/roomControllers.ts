@@ -1,5 +1,6 @@
 import { ObjectId } from "mongodb";
 import { roomModel } from "../models/roomModel";
+import { addressModel } from "../models/addressModel";
 
 // create room
 export async function createRoom(data: any) {
@@ -38,6 +39,33 @@ export async function createRoom(data: any) {
 export async function roomDetails(roomId: string) {
     const room = await roomModel.findById({_id: roomId})
     return room
+}
+
+export async function getAllRooms() {
+    const allRooms = roomModel.find().exec();
+    allRooms.then((rooms) => {
+        const populateAddressData = async (room: any) => {
+            try {
+                const address = await addressModel.findById(room.address);
+                room.address = address;
+                return room;
+            } catch (error) {
+                // handle error
+                throw error;
+            }
+        };
+
+        const populateTasks = rooms.map((room) => populateAddressData(room));
+        
+        return Promise.all(populateTasks)
+    })
+        .then((populateRoom) => {
+            console.log(populateRoom);
+            // return populateRoom
+        })
+        .catch((error) => {
+            // handle error
+        });
 }
 
 

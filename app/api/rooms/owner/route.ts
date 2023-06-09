@@ -3,6 +3,6 @@ import { ownerRooms } from "../../../../services/controllers/roomControllers";
 
 export async function POST(request: Request) {
   const body = await request.json()
-  const allOwnerRooms = await ownerRooms(body._id)
+  const allOwnerRooms = await ownerRooms(body.id)
   return NextResponse.json(allOwnerRooms)
 }

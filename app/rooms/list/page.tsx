@@ -2,15 +2,13 @@
 import CreateRoom from '@/components/rooms/CreateRoom'
 import styles from '../room.module.css'
 import RoomCard from '@/components/rooms/RoomCard'
-import { getServerSession } from "next-auth/next";
 import { redirect } from 'next/navigation';
-import { authOptions } from '@/api/auth/[...nextauth]/route';
 import getCurrentUser from '@/actions/getCurrentUser';
 import axios from 'axios'
 import CreateOwner from '@/components/owner/CreateOwner';
 
-const getRoomsData = async (user) => {
-  const res = await axios.post('http://localhost:3000/api/rooms/owner', user)
+const getRoomsData = async (id: string) => {
+  const res = await axios.post('http://localhost:3000/api/rooms/owner', {id})
   return res.data
 }
 
@@ -22,15 +20,16 @@ const checkExistOwner = async (id: string) => {
 const RoomListPage = async () => {
 
   const currentUser = await getCurrentUser()
-  const session = await getServerSession(authOptions)
+  let userObjectId = currentUser._id
+  const userId = userObjectId.toString()
 
   let owner
   let data
-  if (!session?.user) {
+  if (!currentUser) {
     redirect('/')
   } else {
-    owner = await checkExistOwner(currentUser._id)
-    data = await getRoomsData(currentUser)
+    owner = await checkExistOwner(userId)
+    data = await getRoomsData(userId)
   }
 
   const numberOfRooms = data?.length || 0

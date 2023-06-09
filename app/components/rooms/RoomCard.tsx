@@ -3,6 +3,9 @@ import Link from 'next/link'
 import styles from './rooms.module.css'
 import Image from 'next/image';
 import { BsThreeDots } from 'react-icons/bs'
+import { MdLocationOn } from 'react-icons/md'
+import { HiHome } from 'react-icons/hi'
+import { MdPeopleAlt } from 'react-icons/md'
 import { useState } from 'react'
 import axios from 'axios'
 
@@ -12,14 +15,15 @@ interface RoomCardProps {
     title: string,
     pricePerMonth: string,
     roomCategory: string,
-    tenants: string
+    tenants: string,
+    images: []
   }
 }
 
 const RoomCard: React.FC<RoomCardProps> = ({ room }) => {
 
   const [showAction, setShowAction] = useState(false)
-
+  
   function onClickHandler() {
     setShowAction(!showAction)
   }
@@ -32,7 +36,7 @@ const RoomCard: React.FC<RoomCardProps> = ({ room }) => {
     <div className={styles.roomCard__container}>
       {/* left - Image  */}
       <div className={styles.roomCard__imageContainer}>
-
+        <img src={room.images[0]} alt="rentmeroom_images" className={styles.roomCard__image}  />
       </div>
       {/* right - detail  */}
       <div className={styles.roomCard__detailsContainer}>
@@ -46,8 +50,23 @@ const RoomCard: React.FC<RoomCardProps> = ({ room }) => {
         )}
 
         <div style={{marginTop: '0.9rem'}}>
-          <Link href={`/rooms/list/${room._id}`}>{room.title}</Link>
-          <p>{room.pricePerMonth}</p>
+          <Link href={`/rooms/list/${room._id}`} className={styles.roomCard__title}>{room.title}</Link>
+          <p>₹ {room.pricePerMonth}</p>
+
+          <div>
+            <div style={{display: "flex", gap: ".5rem", alignItems: "center"}}>
+              <MdLocationOn />
+              <p>{room?.address?.address}</p>
+            </div>
+            <div style={{display: "flex", gap: ".5rem", alignItems: "center"}}>
+              <HiHome />
+              <p>{room?.roomCategory}</p>
+            </div>
+            <div style={{display: "flex", gap: ".5rem", alignItems: "center"}}>
+              <MdPeopleAlt />
+              <p>{room?.tenants}</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>

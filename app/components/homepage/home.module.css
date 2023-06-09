@@ -3,8 +3,8 @@
 .hero__container {
     position: relative;
     height: 60vh;
-    margin: 2.5rem;
-    margin-top: 11.4rem;
+    margin: 0 2.5rem;
+    margin-top: 11rem;
     background-color: #7E9BBF;
     display: flex;
     justify-content: flex-start;
@@ -18,7 +18,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    height: 85vh;
+    height: 83vh;
     background-image: url('../../assets/placebg.png');
     background-repeat: no-repeat; 
     background-size: cover; 
@@ -49,11 +49,14 @@
     gap: .8rem;
 }
 
-.hero__textInfo > div >button {
+.hero__link{
     padding: .6rem 1.5rem;
     border-radius: 2rem;
     border: 0.1px solid rgb(230, 230, 230);
     cursor: pointer;
+    color: black;
+    text-decoration: none;
+    color: white
 }
 
 

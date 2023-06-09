@@ -7,8 +7,7 @@ import { ObjectId } from "mongodb"
 export async function POST(request: Request) {
 
     const body = await request.json()
-    const ownerDetails = await ownerModel.find({userId: new ObjectId(body.id)})
-
+    const ownerDetails = await ownerModel.find({userId: body.id})
     return NextResponse.json({
         ownerDetails
     })

@@ -1,4 +1,4 @@
-import { Schema } from "mongoose";
+import { Schema, model, models } from "mongoose";
 import conn from "../database_connection";
 
 const AddressModel = new Schema({
@@ -33,3 +33,4 @@ const AddressModel = new Schema({
 
 export const addressModel = conn.model('addresses', AddressModel)
 
+// export default models?.addresses || model("addresses", AddressModel)

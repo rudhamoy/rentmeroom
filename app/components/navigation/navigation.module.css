@@ -1,16 +1,19 @@
 /* HEADER */
+
 .header__container {
     border: 0.1px solid rgb(230, 230, 230);
     border-radius: .8rem;
     display: flex;
     justify-content: space-between;
-    margin: .6rem 2.5rem;
+    margin-top: .6rem;
     backdrop-filter: blur(10px);
     background-color: rgba(160, 160, 160, 0.5);
     position: fixed;
     z-index: 999;
     top: 0;
-    width: 94%;
+    width: 93vw;
+    margin-left: 2.5rem;
+    margin-right: 2.5rem;
 }
 
 /* left most */

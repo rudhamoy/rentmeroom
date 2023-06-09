@@ -1,5 +1,6 @@
 import { Schema } from "mongoose";
 import conn from "../database_connection";
+// import addresses from './addressModel'
 
 const RoomSchema = new Schema({
     title: {
@@ -19,6 +20,7 @@ const RoomSchema = new Schema({
     },
     address: {
         type: Schema.Types.ObjectId,
+        ref: "addresses"
     },
     images: [
         {
