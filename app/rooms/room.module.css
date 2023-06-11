@@ -24,13 +24,12 @@
 .roomDetail__container {
     display: flex;
     gap: 5rem;
-    justify-content: center;
+    justify-content: space-between;
     margin: 2rem;
+    margin-top: 8rem;
 }
 
-.roomDetail__container > div:nth-child(1) {
-    border: .1px solid gray;
-    height: 20rem;
-    width: 30rem;
+.roomDetails__detailsContainer {
+    width: 40rem;
 }
 

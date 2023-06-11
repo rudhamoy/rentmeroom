@@ -4,7 +4,7 @@ import { addressModel } from "../models/addressModel";
 
 // create room
 export async function createRoom(data: any) {
-    const doc = new roomModel({ 
+    const doc = new roomModel({
         title: data.title,
         pricePerMonth: data.pricePerMonth,
         description: data.description,
@@ -20,7 +20,7 @@ export async function createRoom(data: any) {
         waterSupply: data.waterSupply,
         furnish: data.furnish,
         userId: data.userId
-     });
+    });
     try {
         const response = await doc.save();
         return response;
@@ -37,7 +37,14 @@ export async function createRoom(data: any) {
 
 // get a single room - room details
 export async function roomDetails(roomId: string) {
-    const room = await roomModel.findById({_id: roomId})
+
+    const roomById = await roomModel.findById({ _id: roomId }).exec()
+    const address = await addressModel.findById(roomById.address).exec();
+    const room = {
+        ...roomById.toObject(),
+        // ...room._doc,
+        address: address
+    };
     return room
 }
 
@@ -49,7 +56,7 @@ export async function ownerRooms(userId: any) {
 }
 
 export async function deleteRoom(roomId: string) {
-    const deletedRoom = await roomModel.deleteOne({_id: roomId})
+    const deletedRoom = await roomModel.deleteOne({ _id: roomId })
     return deletedRoom
 }
 

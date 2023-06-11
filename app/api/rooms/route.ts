@@ -30,7 +30,7 @@ export async function GET() {
     for (const room of allRooms) { //populate address data on every room via iterating over every room
       const address = await addressModel.findById(room.address).exec();
       const roomWithAddress = {
-        ...room.toObject(), // to change the mongoose documents to an object otherwise use this 
+        ...room.toObject(), // to change the mongoose documents to an object otherwise use the commented one
         // ...room._doc,
         address: address
       };
