@@ -1,5 +1,6 @@
 'use client'
 import React, { useState, useRef } from 'react'
+import Link from 'next/link'
 import styles from './navigation.module.css'
 import Image from 'next/image'
 import ModalPortal from '../utils/ModalPortal'
@@ -25,7 +26,10 @@ const ProfileMenu: React.FC<ProfileNavProps> = ({ image, name, email }) => {
           <ModalPortal>
             <p>{email}</p>
             <p>{name}</p>
-            <p>My Profile</p>
+            <Link 
+            href="/profile"
+            style={{textDecoration: "none", color: "black"}}
+            >My Profile</Link>
             <button onClick={() => signOut()}>Logout</button>
           </ModalPortal>
         )}

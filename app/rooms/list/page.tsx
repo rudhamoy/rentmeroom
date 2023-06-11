@@ -4,18 +4,10 @@ import styles from '../room.module.css'
 import RoomCard from '@/components/rooms/RoomCard'
 import { redirect } from 'next/navigation';
 import getCurrentUser from '@/actions/getCurrentUser';
-import axios from 'axios'
 import CreateOwner from '@/components/owner/CreateOwner';
+import { getOwnerRoomsList } from '@/actions/roomActions';
+import { checkExistOwner } from '@/actions/userActions';
 
-const getRoomsData = async (id: string) => {
-  const res = await axios.post('http://localhost:3000/api/rooms/owner', {id})
-  return res.data
-}
-
-const checkExistOwner = async (id: string) => {
-  const res = await axios.post('http://localhost:3000/api/owner', {id})
-  return res.data
-}
 
 const RoomListPage = async () => {
 
@@ -29,7 +21,7 @@ const RoomListPage = async () => {
     redirect('/auth/signup')
   } else {
     owner = await checkExistOwner(userId)
-    data = await getRoomsData(userId)
+    data = await getOwnerRoomsList(userId)
   }
 
   const numberOfRooms = data?.length || 0
