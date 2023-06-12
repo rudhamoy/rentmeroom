@@ -48,6 +48,14 @@ export async function roomDetails(roomId: string) {
     return room
 }
 
+export async function updateRoom(roomId: string, data: any) {
+    let roomById = await roomModel.findById({ _id: roomId })
+
+    const updatedRoom = await roomModel.findByIdAndUpdate(roomById, data)
+
+    return updatedRoom
+}
+
 
 // fetch the list of owner's room
 export async function ownerRooms(userId: any) {

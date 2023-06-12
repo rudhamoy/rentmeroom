@@ -3,10 +3,15 @@ import Image from 'next/image'
 import styles from '../../room.module.css'
 import { getRoomDetails } from '@/actions/roomActions'
 import SingleRoomMap from '@/components/utils/maps/SingleRoomMap'
+import getCurrentUser from '@/actions/getCurrentUser'
+import RoomDetail from '@/components/rooms/RoomDetail'
 
 const RoomDetailPage = async ({ params }: { params: { roomId: string } }) => {
+  const currentUser = await getCurrentUser()
+  const userId = currentUser._id.toString()
 
   const data = await getRoomDetails(params.roomId)
+  console.log(data)
 
   return (
     <div className={styles.roomDetail__container}>
@@ -17,21 +22,7 @@ const RoomDetailPage = async ({ params }: { params: { roomId: string } }) => {
 
       {/* details */}
       <div className={styles.roomDetails__detailsContainer}>
-        <p>{data?.title}</p>
-        <p>{data?.pricePerMonth}</p>
-
-        <div>
-          <p>Room: <span>{data?.roomCategory}</span></p>
-          <p>Furnish: <span>{data?.furnish}</span></p>
-          <p>Room for: <span>{data?.tenants}</span></p>
-          <p>Floor: <span>{data?.floor}</span></p>
-          <p>Bathroom/Washroom: <span>{data?.bathroomType}</span></p>
-          <p>Electric Bill Payment by: <span>{data?.electricBill === true ? "Self" : "Owner"}</span></p>
-          <p>Parking available: <span>{data?.parking === true ? "Yes" : "N/A"}</span></p>
-        </div>
-
-        <button>Add to Bookmark</button>
-
+        <RoomDetail data={data} userId={userId} />
         <div style={{border: ".1px solid gray", height: "300px", width: "100%"}}>
          <SingleRoomMap 
          longitude={data?.address?.coordinates?.long} 

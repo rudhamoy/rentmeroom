@@ -113,11 +113,11 @@ const CreateRoomForm: React.FC<CreateRoomFormProps> = ({ setShowModal }) => {
       {/* STEP TWO - ROOM UTILITY */}
       {steps === 2 && (
         <div>
-          <ToggleButton placeholder="Bathroom type" setter={setBathroom} switchATitle="Shared" switchBTitle="Attached" />
-          <ToggleButton placeholder="Electric bill" setter={setElectricBill} switchATitle="Self" switchBTitle="Owner" />
-          <ToggleButton placeholder="Balcony" setter={setBalcony} switchATitle="No" switchBTitle="Yes" />
-          <ToggleButton placeholder="Parking" setter={setParking} switchATitle="No" switchBTitle="Yes" />
-          <ToggleButton placeholder="Water System" setter={setWaterSupply} switchATitle="Water Tank" switchBTitle="Water Supply" />
+          <ToggleButton placeholder="Bathroom type" setter={setBathroom} value={bathroom} switchATitle="Shared" switchBTitle="Attached" />
+          <ToggleButton placeholder="Electric bill" setter={setElectricBill} value={electricBill} switchATitle="Self" switchBTitle="Owner" />
+          <ToggleButton placeholder="Balcony" setter={setBalcony} value={balcony} switchATitle="No" switchBTitle="Yes" />
+          <ToggleButton placeholder="Parking" setter={setParking} value={parking} switchATitle="No" switchBTitle="Yes" />
+          <ToggleButton placeholder="Water System" setter={setWaterSupply} value={waterSupply} switchATitle="Water Tank" switchBTitle="Water Supply" />
           <select onChange={e => setFurnish(e.target.value)}>
           {['Unfurnished', 'Semi-furnished', 'Furnished'].map(item => (
             <option key={item} value={item}>{item}</option>

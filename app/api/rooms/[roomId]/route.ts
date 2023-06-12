@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { deleteRoom, roomDetails } from "../../../../services/controllers/roomControllers";
+import { deleteRoom, roomDetails, updateRoom } from "../../../../services/controllers/roomControllers";
 
 export async function GET(request: Request, {params} : {params: { roomId: string}}) {
 
@@ -9,6 +9,12 @@ export async function GET(request: Request, {params} : {params: { roomId: string
 
     return NextResponse.json(room)
 }
+
+export async function PUT(request: Request, {params} : {params: { roomId: string}}) {
+    const body = await request.json()
+    const room = await updateRoom(params.roomId, body)
+    return NextResponse.json(room)
+  }
 
 export async function DELETE(request: Request, { params } : { params : { roomId : string}}) {
     const { roomId } = params

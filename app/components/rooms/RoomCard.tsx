@@ -1,4 +1,5 @@
 'use client'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import styles from './rooms.module.css'
 import Image from 'next/image';
@@ -6,9 +7,8 @@ import { BsThreeDots, BsBookmarks } from 'react-icons/bs'
 import { MdLocationOn } from 'react-icons/md'
 import { HiHome } from 'react-icons/hi'
 import { MdPeopleAlt } from 'react-icons/md'
-import { useState } from 'react'
 import axios from 'axios'
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 
 interface RoomCardProps {
   room: {
@@ -22,8 +22,9 @@ interface RoomCardProps {
 }
 
 const RoomCard: React.FC<RoomCardProps> = ({ room }) => {
-
+  
   const [showAction, setShowAction] = useState(false)
+  const router = useRouter()
   const pathname = usePathname()
   
   // helper function to show modal - edit/delete modal
