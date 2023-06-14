@@ -12,7 +12,7 @@ const RecentUpdates = () => {
     // fetch room list
     async function getNewRooms() {
         const res = await axios.get('/api/rooms')
-        setNewRooms(res.data)
+        setNewRooms(res.data.rooms)
         console.log(res.data)
     }
 
