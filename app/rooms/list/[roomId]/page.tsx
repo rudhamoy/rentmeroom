@@ -11,7 +11,6 @@ const RoomDetailPage = async ({ params }: { params: { roomId: string } }) => {
   const userId = currentUser._id.toString()
 
   const data = await getRoomDetails(params.roomId)
-  console.log(data)
 
   return (
     <div className={styles.roomDetail__container}>
