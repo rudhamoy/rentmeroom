@@ -6,7 +6,7 @@ class APIFeatures {
 
 
     filter() {
-        const queryCopy = this.queryStr
+        const queryCopy = this.queryStr;
         this.query.find(queryCopy)
         return this
     }
@@ -21,7 +21,13 @@ class APIFeatures {
         return this
     }
 
-
+    address(locations) {
+        this.query.find({
+            address: locations
+        })
+        
+        return this
+    }
 
     limit(limitNum: number) {
         this.query = this.query.limit(limitNum)

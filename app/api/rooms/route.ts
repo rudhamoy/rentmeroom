@@ -40,16 +40,18 @@ export async function GET(request: Request) {
     tenants,
   }
 
+  const location = searchParams.get('location') || "";
+  // const pincode = searchParams.get('pincode') || 0;
+  const address = await addressModel.find({address: {$regex: location, $options: "i"}})
+
+
   const apiFeatures = new APIFeatures(roomModel.find(), allQuery)
   .filter()
   .limit(limit)
   .priceRange([searchParams.get('min') || 2000, searchParams.get('max') || 30000])
+  .address(address.map(location => location._id))
 
   let allRooms = await apiFeatures.query;
-
-  const location = searchParams.get('location') || "";
-  const address = await addressModel.find({address: {$regex: location, $options: "i"}, pincode: searchParams.get('pincode')})
-  console.log('address', address)
 
   /**
    * get all rooms via room model and populate address data
@@ -67,7 +69,8 @@ export async function GET(request: Request) {
     populatedAddress.push(roomWithAddress);
   }
 
-  const total = await roomModel.countDocuments()
+  const total = populatedAddress.length
+  // await roomModel.countDocuments()
 
   return NextResponse.json({
     total,
