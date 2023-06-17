@@ -11,3 +11,7 @@ export const getOwnerRoomsList = async (id: string) => {
   const res = await axios.post('http://localhost:3000/api/rooms/owner', {id})
   return res.data
 }
+
+// export const getSearchRooms = () => {
+
+// }

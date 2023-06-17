@@ -1,0 +1,10 @@
+
+.searchContent { 
+    margin: 2.5rem;
+}
+
+.searchContent__results {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .8rem;
+}

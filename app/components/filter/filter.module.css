@@ -1,0 +1,78 @@
+
+
+.filter__container {
+    display: flex;
+    margin: 2.5rem;
+    border: 0.1px solid rgb(209, 209, 209);
+    border-radius: 2rem;
+    /* overflow: hidden; */
+    /* padding: 4px; */
+    /* position: relative; */
+}
+
+/* search */
+.filter__container > div:nth-child(1) {
+    width: 40%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-right: 0.1px solid rgb(209, 209, 209);
+    padding: 4px;
+    background-color: white;
+    border-top-left-radius: 2rem;
+    border-bottom-left-radius: 2rem;
+}
+
+/* search input */
+.filter__container > div:nth-child(1) > input {
+    width: 90%;
+    border: none;
+    padding: 1rem;
+    outline: none;
+    /* background-color: rgba(241, 241, 241, 0.451); */
+}
+
+/* filter and sort buttons */
+.filter__container > div:nth-child(2) {
+    width: 60%;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: white;
+    border-top-right-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+}
+
+.filter__container> div > div {
+    display: flex;
+    padding: 0.4rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.filter__container> div > div > span {
+    font-size: .9rem;
+    font-weight: 500;
+}
+
+.filter__sort {
+    position: relative;
+}
+
+.filter__sortContainer {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #fff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    display: none;
+    border-radius: .2rem;
+}
+
+.filter__sort:hover .filter__sortContainer {
+    display: block;
+  }
+  

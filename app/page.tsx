@@ -1,5 +1,5 @@
 
-import FilterButton from "./components/homepage/FilterButton";
+import FilterButton from "./components/filter/FilterButton";
 import HeroSection from "./components/homepage/HeroSection";
 import RecentUpdates from "./components/homepage/RecentUpdates";
 
