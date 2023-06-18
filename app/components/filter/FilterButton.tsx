@@ -18,7 +18,7 @@ const FilterButton: React.FC<FilterProps> = ({ setSearchRes }) => {
 
   const pathname = usePathname()
   const router = useRouter()
-  const searchParams = useSearchParams()!
+  const searchParams = useSearchParams()
 
   const [keyword, setKeyword] = useState<string>('')
 
@@ -29,42 +29,26 @@ const FilterButton: React.FC<FilterProps> = ({ setSearchRes }) => {
   let queryMax = searchParams.get("max")
   let queryRoomCategory = searchParams.get("roomCategory")
 
-  useEffect(() => {
-    if (searchParams.has("tenants")) {
-      link = link.concat(`&tenants=${queryTenants}`)
-    }
 
-    if (searchParams.has("min")) {
-      link = link.concat(`&min=${queryMin}`)
-    }
-
-    if (searchParams.has("max")) {
-      link = link.concat(`&max=${queryMax}`)
-    }
-
-    if (searchParams.has("roomCategory")) {
-      link = link.concat(`&roomCategory=${queryRoomCategory}`)
-    }
-  }, [queryTenants, queryMin, queryMax, queryRoomCategory])
+  let queryParams
+  if (typeof window !== undefined) {
+    queryParams = new URLSearchParams(window.location.search)
+  }
 
   async function fetchRoomsByDefault() {
-    const res = await axios.get(link)
+    let links = '/api/rooms' + window.location.search
+    const res = await axios.get(links)
     setSearchRes?.(res.data)
+  }
+
+  const deleteTenantsQuery = async () => {
+    queryParams.delete('tenants')
+    router.push(pathname + '?' + queryParams.toString())
   }
 
   useEffect(() => {
     fetchRoomsByDefault()
-  }, [])
-
-  const searchHandler = async () => {
-    const res = await axios.get(link)
-    setSearchRes?.(res?.data)
-    if (pathname !== "/search") {
-      router.push('/search')
-    }
-  }
-
-
+  }, [queryTenants])
 
   return (
     <>
@@ -74,7 +58,7 @@ const FilterButton: React.FC<FilterProps> = ({ setSearchRes }) => {
         <div>
           <BiSearch
             role='button'
-            onClick={searchHandler}
+            onClick={fetchRoomsByDefault}
             style={{
               color: "GrayText",
               fontSize: "1.8rem",
@@ -88,9 +72,9 @@ const FilterButton: React.FC<FilterProps> = ({ setSearchRes }) => {
         </div>
         <div>
           {/* sort filter */}
-          <PriceRange onClick={searchHandler} />
-          <TenantFilter onClick={searchHandler} />
-          <RoomFilter onClick={searchHandler} />
+          <PriceRange onClick={fetchRoomsByDefault} />
+          <TenantFilter onClick={fetchRoomsByDefault} />
+          <RoomFilter onClick={fetchRoomsByDefault} />
           <div><span>Floor</span> <BsFilter /></div>
           <div><span>Parking</span> <BsFilter /></div>
           <More />
@@ -99,14 +83,17 @@ const FilterButton: React.FC<FilterProps> = ({ setSearchRes }) => {
 
       {/* buttons */}
       <div style={{ display: "flex", gap: "1rem", marginLeft: "2.5rem" }}>
-        {searchParams.has('tenants') && (
-          <button style={{ padding: "6px", backgroundColor: "black", color: "white" }}>{queryTenants}</button>
+        {(searchParams.has('tenants') && queryTenants !== "All") && (
+          <button
+            style={{ padding: "6px", backgroundColor: "black", color: "white" }}
+            onClick={deleteTenantsQuery}
+          >{queryTenants} <span>x</span></button>
         )}
-        {searchParams.has('roomCategory') && (
-          <button style={{ padding: "2px 4px", backgroundColor: "black", color: "white" }}>{queryRoomCategory}</button>
+        {(searchParams.has('roomCategory') && queryRoomCategory !== "All") && (
+          <button style={{ padding: "2px 4px", backgroundColor: "black", color: "white" }}>{queryRoomCategory} <span>x</span></button>
         )}
         {searchParams.has('min') && (
-          <button style={{ padding: "2px 4px", backgroundColor: "black", color: "white" }}>{`${queryMin} - ${queryMax}`}</button>
+          <button style={{ padding: "2px 4px", backgroundColor: "black", color: "white" }}>{`${queryMin} - ${queryMax}`} <span>x</span></button>
         )}
       </div>
     </>

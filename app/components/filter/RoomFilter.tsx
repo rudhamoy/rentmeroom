@@ -37,7 +37,7 @@ const RoomFilter: React.FC<RoomFilterProps> = ({ onClick }) => {
             <span>Room</span> <BsFilter />
             <div className={styles.filter__sortContainer}>
                 <select onChange={e => setRoomCategory(e.target.value)}>
-                    {["1R", "1RK", "1BHK", "2R", "2RK", "2BHK", "3BHK"].map(room => (
+                    {["All", "1R", "1RK", "1BHK", "2R", "2RK", "2BHK", "3BHK"].map(room => (
                         <option key={room} value={room}>{room}</option>
                     ))}
                 </select>
