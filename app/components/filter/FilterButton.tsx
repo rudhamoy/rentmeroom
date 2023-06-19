@@ -29,26 +29,33 @@ const FilterButton: React.FC<FilterProps> = ({ setSearchRes }) => {
   let queryMax = searchParams.get("max")
   let queryRoomCategory = searchParams.get("roomCategory")
 
-
-  let queryParams
-  if (typeof window !== undefined) {
-    queryParams = new URLSearchParams(window.location.search)
+  async function fetchRoomsByDefault() {
+    let links
+    if(pathname !== '/search' && keyword !== "") {
+      router.push(`/search?location=${keyword}`)
+      links = '/api/rooms' + window.location.search
+    } else {
+      router.push(`/search?location=${keyword}`)
+      links = `/api/rooms?location=${keyword}`
+    }
+    const res = await axios.get(links)
+    setSearchRes?.(res.data)
   }
 
-  async function fetchRoomsByDefault() {
+  // useEffect(() => {
+  //   fetchRoomsByDefault()
+  // }, [])
+
+  async function searchQuery() {
     let links = '/api/rooms' + window.location.search
     const res = await axios.get(links)
     setSearchRes?.(res.data)
   }
 
-  const deleteTenantsQuery = async () => {
-    queryParams.delete('tenants')
-    router.push(pathname + '?' + queryParams.toString())
-  }
 
   useEffect(() => {
-    fetchRoomsByDefault()
-  }, [queryTenants])
+    searchQuery()
+  }, [queryTenants, queryRoomCategory])
 
   return (
     <>
@@ -72,30 +79,16 @@ const FilterButton: React.FC<FilterProps> = ({ setSearchRes }) => {
         </div>
         <div>
           {/* sort filter */}
-          <PriceRange onClick={fetchRoomsByDefault} />
-          <TenantFilter onClick={fetchRoomsByDefault} />
-          <RoomFilter onClick={fetchRoomsByDefault} />
+          <PriceRange onClick={searchQuery} />
+          <TenantFilter onClick={searchQuery} />
+          <RoomFilter onClick={searchQuery} />
           <div><span>Floor</span> <BsFilter /></div>
           <div><span>Parking</span> <BsFilter /></div>
           <More />
         </div>
       </div>
 
-      {/* buttons */}
-      <div style={{ display: "flex", gap: "1rem", marginLeft: "2.5rem" }}>
-        {(searchParams.has('tenants') && queryTenants !== "All") && (
-          <button
-            style={{ padding: "6px", backgroundColor: "black", color: "white" }}
-            onClick={deleteTenantsQuery}
-          >{queryTenants} <span>x</span></button>
-        )}
-        {(searchParams.has('roomCategory') && queryRoomCategory !== "All") && (
-          <button style={{ padding: "2px 4px", backgroundColor: "black", color: "white" }}>{queryRoomCategory} <span>x</span></button>
-        )}
-        {searchParams.has('min') && (
-          <button style={{ padding: "2px 4px", backgroundColor: "black", color: "white" }}>{`${queryMin} - ${queryMax}`} <span>x</span></button>
-        )}
-      </div>
+      
     </>
 
   )

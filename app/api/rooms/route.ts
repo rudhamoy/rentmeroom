@@ -24,8 +24,11 @@ export async function GET(request: Request) {
   const { searchParams } = new URL(request.url)
   // console.log(searchParams)
 
+
+  let page =  searchParams.get('page')
+
   let limitParams = searchParams.get('limit');
-  const limit = parseInt(limitParams) || 5;
+  const limit = parseInt(limitParams) || 4;
 
   let roomCategory = searchParams.get('roomCategory') || "All"
   const roomCategoryOptions = ["1R", "1RK", "1BHK", "2R", "2RK", "2BHK", "3BHK"];
@@ -38,6 +41,7 @@ export async function GET(request: Request) {
   let allQuery = {
     roomCategory,
     tenants,
+    page,
   }
 
   const location = searchParams.get('location') || "";
@@ -47,11 +51,17 @@ export async function GET(request: Request) {
 
   const apiFeatures = new APIFeatures(roomModel.find(), allQuery)
   .filter()
-  .limit(limit)
   .priceRange([searchParams.get('min') || 2000, searchParams.get('max') || 30000])
   .address(address.map(location => location._id))
+  // .limit(limit)
 
   let allRooms = await apiFeatures.query;
+  const filteredRoomCount = allRooms.length
+
+  apiFeatures.pagination(limit);
+
+  allRooms = await apiFeatures.query.clone();
+
 
   /**
    * get all rooms via room model and populate address data
@@ -69,12 +79,13 @@ export async function GET(request: Request) {
     populatedAddress.push(roomWithAddress);
   }
 
-  const total = populatedAddress.length
-  // await roomModel.countDocuments()
+  const totalRooms = await roomModel.countDocuments()
+ 
 
   return NextResponse.json({
-    total,
     limit,
+    totalRooms,
+    filteredRoomCount,
     rooms: populatedAddress,
   });
 
