@@ -41,11 +41,11 @@ const Header = async () => {
            * if user is tenant - show book a rent
            * if user is not log in - show both
            */}
-          {(session && userType.role === "owner") ? (
+          {(session && userType?.role === "owner") ? (
             <Link href={'/rooms/list'} style={{ color: "black", textDecoration: "none", marginRight: "1rem" }} >List your property</Link>
           )
             :
-            (session && userType.role === "tenant") ? (
+            (session && userType?.role === "tenant") ? (
               <Link href={'/rooms/list'} style={{ color: "black", textDecoration: "none", marginRight: "1rem" }} >Book a rent</Link>
             )
               :
