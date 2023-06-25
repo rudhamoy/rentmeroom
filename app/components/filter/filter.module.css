@@ -5,35 +5,55 @@
     margin: 2.5rem;
     border: 0.1px solid rgb(209, 209, 209);
     border-radius: 2rem;
-    /* overflow: hidden; */
-    /* padding: 4px; */
-    /* position: relative; */
 }
 
 /* search */
-.filter__container > div:nth-child(1) {
+.filter__searchContainer {
     width: 40%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     border-right: 0.1px solid rgb(209, 209, 209);
     padding: 4px;
     background-color: white;
     border-top-left-radius: 2rem;
     border-bottom-left-radius: 2rem;
+    position: relative;
+}
+
+.filter__search {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 890;
+    /* background-color: green; */
 }
 
 /* search input */
-.filter__container > div:nth-child(1) > input {
+.filter__search > input {
     width: 90%;
     border: none;
     padding: 1rem;
     outline: none;
-    /* background-color: rgba(241, 241, 241, 0.451); */
+    z-index: 890;
+}
+
+.autoSuggestion {
+    /* background-color: chocolate; */
+    background-color: white;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    padding: 10px;
+    padding-top: 20px;
+    z-index: 800;
+    border-left: 0.1px solid rgb(209, 209, 209);
+    border-right: 0.1px solid rgb(209, 209, 209);
+    border-bottom: 0.1px solid rgb(209, 209, 209);
+    border-bottom-left-radius: 2rem;
+    border-bottom-right-radius: 2rem;
 }
 
 /* filter and sort buttons */
-.filter__container > div:nth-child(2) {
+.filter__filterContainer {
     width: 60%;
     display: flex;
     justify-content: space-evenly;
@@ -42,7 +62,7 @@
     border-bottom-right-radius: 2rem;
 }
 
-.filter__container> div > div {
+.filter__filterContainer > div {
     display: flex;
     padding: 0.4rem 1rem;
     display: flex;
@@ -51,10 +71,10 @@
     cursor: pointer;
 }
 
-.filter__container> div > div > span {
-    font-size: .9rem;
-    font-weight: 500;
-}
+.filter__searchContainer:hover .searchOptions {
+    display: block;
+  }
+
 
 .filter__sort {
     position: relative;
@@ -67,9 +87,10 @@
     transform: translateX(-50%);
     background-color: #fff;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-    padding: 10px;
+    padding: .8rem;
     display: none;
     border-radius: .2rem;
+    z-index: 900;
 }
 
 .filter__sort:hover .filter__sortContainer {

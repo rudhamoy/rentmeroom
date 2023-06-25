@@ -24,7 +24,6 @@ export async function GET(request: Request) {
   const { searchParams } = new URL(request.url)
   // console.log(searchParams)
 
-
   let page =  searchParams.get('page')
 
   let limitParams = searchParams.get('limit');

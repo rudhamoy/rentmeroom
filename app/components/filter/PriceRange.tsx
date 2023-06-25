@@ -38,28 +38,37 @@ const PriceRange: React.FC<PriceRangeProps> = ({ onClick }) => {
     )
 
     useEffect(() => {
-        if(min > 0) {
+        if (min > 0) {
             router.push(pathname + '?' + createQueryString('min', min))
         }
-        if(max > min) {
+        if (max > min) {
             router.push(pathname + '?' + createQueryString('max', max))
         }
-      }, [min, max])
+    }, [min, max])
 
     return (
         <div className={styles.filter__sort}>
             <span>Price Range</span> <BsFilter />
             <div className={styles.filter__sortContainer}>
                 <div>
-                    <label htmlFor="minPrice">Min</label>
-                    <input type="number" onChange={handleMinChange} />
+                    <label htmlFor="minPrice">Min:</label>
+                    <input type="number" onChange={handleMinChange} placeholder='3000' style={{padding: ".4rem"}} />
+                </div>
+                <div style={{marginTop: "1rem"}}>
+                    <label htmlFor="minPrice">Max:</label>
+                    <input type="number" onChange={handleMaxChange} placeholder='3000' style={{padding: ".4rem"}} />
                 </div>
                 <div>
-                    <label htmlFor="minPrice">Max</label>
-                    <input type="number" onChange={handleMaxChange} />
-                </div>
-                <div>
-                    <button onClick={onClick}>Apply</button>
+                    <button
+                        style={
+                            {
+                                marginTop: "1rem",
+                                border: "none",
+                                backgroundColor: "black",
+                                color: "white",
+                                padding: ".5rem"
+                            }}
+                        onClick={onClick}>Apply</button>
                 </div>
             </div>
         </div>

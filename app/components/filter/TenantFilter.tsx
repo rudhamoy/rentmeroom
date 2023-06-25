@@ -35,14 +35,22 @@ const TenantFilter: React.FC<TenantFilterProps> = ({ onClick }) => {
     return (
         <div className={styles.filter__sort}>
             <span>Tenants</span> <BsFilter />
-            <div className={styles.filter__sortContainer}>
-                <select onChange={e => setTenants(e.target.value)}>
+            <div className={styles.filter__sortContainer} style={{width: "12rem"}} >
+                <select onChange={e => setTenants(e.target.value)} style={{width: "100%", padding: ".4rem"}}>
                     {["All", "Students", "Family", "Girls", "Boys", "Bachelor"].map(tenant => (
                         <option key={tenant} value={tenant}>{tenant}</option>
                     ))}
                 </select>
                 <div>
-                    <button onClick={onClick}>Apply</button>
+                    <button
+                    style={
+                        {marginTop: "1rem", 
+                        border: "none",
+                        backgroundColor: "black",
+                        color: "white",
+                        padding: ".5rem"
+                        }}
+                    onClick={onClick}>Apply</button>
                 </div>
             </div>
         </div>

@@ -35,14 +35,22 @@ const RoomFilter: React.FC<RoomFilterProps> = ({ onClick }) => {
     return (
         <div className={styles.filter__sort}>
             <span>Room</span> <BsFilter />
-            <div className={styles.filter__sortContainer}>
-                <select onChange={e => setRoomCategory(e.target.value)}>
+            <div className={styles.filter__sortContainer} style={{width: "12rem"}}>
+                <select onChange={e => setRoomCategory(e.target.value)} style={{width: "100%", padding: ".4rem"}}>
                     {["All", "1R", "1RK", "1BHK", "2R", "2RK", "2BHK", "3BHK"].map(room => (
                         <option key={room} value={room}>{room}</option>
                     ))}
                 </select>
                 <div>
-                    <button onClick={onClick}>Apply</button>
+                    <button
+                    style={
+                        {marginTop: "1rem", 
+                        border: "none",
+                        backgroundColor: "black",
+                        color: "white",
+                        padding: ".5rem"
+                        }}
+                    onClick={onClick}>Apply</button>
                 </div>
             </div>
         </div>

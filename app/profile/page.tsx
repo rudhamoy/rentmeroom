@@ -14,7 +14,7 @@ const ProfilePage = async () => {
 
     /**
      * check if user is owner or tenant
-     * if tenant UIContent = <TenantProfile /> else UIContent = <OwnerProfile />
+     * if tenant --> UIContent = <TenantProfile /> else UIContent = <OwnerProfile />
      * this is will render in ui depending on the type of user
      */
     let UIContent
