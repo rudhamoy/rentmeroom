@@ -1,55 +1,55 @@
 'use client'
-import { useEffect } from 'react'
 import Image from 'next/image'
 import { FaFacebookF, FaGoogle } from 'react-icons/fa'
 import backgroundImage from '@/assets/svg/authBG.png'
 import styles from '../auth.module.css'
 import { signIn, useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
+import ModalPortal from '@/components/utils/ModalPortal'
+import Modal from '@/components/utils/Modal'
+import { BsArrowLeft } from 'react-icons/bs'
 
 const SignupPage = () => {
-  // const { data } = useSession()
 
-  // const router = useRouter()
+  const router = useRouter()
 
-  // useEffect(() => {
-  //   if(data?.user) {
-  //     router.push('/')
-  //   }
-  // }, [])
-
-  
   return (
-    <div className={styles.container}>
-      {/* left section - info */}
-      <section>
-        <div>
-          <h1 style={{textAlign: "center", fontSize: "50px"}}>RENTMEROOM</h1>
-          <Image src={backgroundImage} width={500} height={250} alt="rentmeroom" />
-        </div>
-      </section>
-      {/* right section - form */}
-      <section>
-      
-        <div className={styles.formContainer}>
+    <Modal bgColor='white'>
+      <div className={styles.container}>
+        {/* right section - form */}
+        <section>
+          <div>
+            <h1 style={{ textAlign: "center", fontSize: "50px" }}>RENTMEROOM</h1>
+          </div>
+          <div className={styles.formContainer}>
             <input placeholder='Mobile' />
             <input placeholder='Password' />
             <input placeholder='Confirm Password' />
             <button>Sign Up</button>
-        </div>
+          </div>
 
-        <div className={styles.extraButton}>
-          <button onClick={() => signIn('google')}>
-            <FaGoogle />
-            <span>Sign up with Google</span>
-          </button>
-          <button>
-            <FaFacebookF />
-            <span>Sign up with Facebook</span>
-          </button>
+          <div className={styles.extraButton}>
+            <button onClick={() => signIn('google')}>
+              <FaGoogle />
+              <span>Sign up with Google</span>
+            </button>
+            <button>
+              <FaFacebookF />
+              <span>Sign up with Facebook</span>
+            </button>
+          </div>
+          
+          <div style={{ display: "flex", justifyContent: "space-between", marginTop: "2rem" }}>
+          <p style={{ cursor: "pointer" }}>
+            <span><BsArrowLeft /></span>
+            <span onClick={() => router.back()}>Go back</span>
+          </p>
+          <span onClick={() => router.push('/')} style={{ cursor: "pointer" }}>Cancel</span>
         </div>
-      </section>
-    </div>
+        </section>
+      </div>
+    </Modal>
+
   )
 }
 

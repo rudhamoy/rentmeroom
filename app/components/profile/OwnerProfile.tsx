@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import Link from 'next/link'
+import RoomCard from '../rooms/RoomCard'
 
 interface OwnerProfileProps {
     userId: string
@@ -23,20 +24,13 @@ const OwnerProfile: React.FC<OwnerProfileProps> = ({ userId }) => {
 
     return (
         <div>
-            <div>
+            <div style={{display: "flex", justifyContent: "space-between", marginBottom: "2rem"}}>
                 <p>Your room list</p>
                 <Link href="/rooms/list">Create Room</Link>
             </div>
-            <div>
+            <div style={{display: "grid", gridTemplateColumns: "1fr 1fr", gap: 15}}>
                 {rooms.map(room => (
-                    <div style={{display: "flex", gap: 10}}>
-                        <img src={room?.images[0]} alt={room?.title} height={110} width={210} />
-                        <div>
-                            <p>{room?.title}</p>
-                            <p>{room?.pricePerMonth}</p>
-                            <p>{room?.roomCategory}</p>
-                        </div>
-                    </div>
+                    <RoomCard key={room._id} room={room} />
                 ))}
             </div>
         </div>

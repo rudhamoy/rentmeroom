@@ -1,24 +1,17 @@
-"use client"
-import { useState, useEffect } from 'react'
+
 import axios from 'axios'
 import RoomCard from '../rooms/RoomCard'
 import styles from './home.module.css'
 import FilterButton from '../filter/FilterButton';
+import Link from 'next/link';
 
-const RecentUpdates = () => {
-    const [switchView, setSwitchView] = useState('listView');
-    const [newRooms, setNewRooms] = useState([])
+async function getRooms() {
+    const res = await axios.get('http://localhost:3000/api/rooms')
+    return res.data
+}
 
-    // fetch room list
-    async function getNewRooms() {
-        const res = await axios.get('/api/rooms')
-        setNewRooms(res.data.rooms)
-        console.log(res.data)
-    }
-
-    useEffect(() => {
-        getNewRooms()
-    }, [])
+const RecentUpdates = async () => {
+    const newRooms = await getRooms()
 
     const numberOfRooms = newRooms?.length || 0
 
@@ -33,7 +26,7 @@ const RecentUpdates = () => {
             <div
                 className={styles.recentUpdates__container}
             >
-                {newRooms.map((room, index) => (
+                {newRooms.rooms.map((room, index) => (
                     <RoomCard key={index} room={room} />
                 ))}
 
@@ -46,7 +39,7 @@ const RecentUpdates = () => {
                 )}
             </div>
             <div className={styles.recentUpdates__loadMore}>
-                <button>Load More</button>
+                <Link href="/search" className={styles.recentUpdates__loadMoreButton}>View More</Link>
             </div>
         </>
     )

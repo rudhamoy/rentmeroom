@@ -21,7 +21,6 @@ const Header = async () => {
   if (session) {
     currentUser = await getCurrentUser()
     userType = await getUserWithType(currentUser._id)
-    console.log(userType)
   }
 
   return (

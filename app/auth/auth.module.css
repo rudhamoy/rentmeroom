@@ -1,9 +1,9 @@
 
-.container {
+/* .container {
     display: flex;
-}
+} */
 
-.container > section {
+/* .container > section {
     width: 50%;
     height: 100vh;
     padding: 2rem;
@@ -11,14 +11,15 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
+} */
 
-.container > section:nth-child(2) {
+.container > section {
     background-color: #EDEDED;
-    
+    padding: 2rem;
+    border-radius: .8rem;
 }
 
-.container > section:nth-child(2) > div > input {
+.container > section > div > input {
     padding: 10px;
     outline: none;
     border-radius: 0.5rem;
@@ -67,4 +68,18 @@
 .extraButton > button > span {
     font-size: 0.9rem;
     padding: 0 4px 0 4px;
+}
+
+
+/* SIGN IN */
+
+.signIn__container {
+    /* background-color: gray; */
+    
+}
+
+.signIn__container > section > div > input {
+    padding: 10px;
+    outline: none;
+    border-radius: 0.5rem;
 }

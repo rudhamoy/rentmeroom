@@ -51,9 +51,12 @@ const RoomCard: React.FC<RoomCardProps> = ({ room }) => {
          */}
         {pathname === "/rooms/list" ? (
           <BsThreeDots onClick={onClickHandler} style={{ position: "absolute", right: 2, top: 1, cursor: "pointer" }} />
+        ) : pathname === "/profile" ? (
+          <p style={{ position: "absolute", right: 1, top: 0, fontSize: ".65rem", padding: ".2rem", background: "yellow" }}>un-occupied</p>
         ) : (
           <BsBookmarks style={{ position: "absolute", right: 1, top: 1, cursor: "pointer" }} />
-        )}
+        )
+        }
 
         {/* 
           show this modal when owner click to three dots menu

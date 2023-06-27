@@ -15,8 +15,10 @@ export const metadata = {
 
 export default function RootLayout({
   children,
+  auth
 }: {
-  children: React.ReactNode
+  children: React.ReactNode,
+  auth: React.ReactNode
 }) {
  
   return (
@@ -27,6 +29,7 @@ export default function RootLayout({
           {children}
           <Footer />
         </SessionProvider>
+        {auth}
       </body>
     </html>
   )

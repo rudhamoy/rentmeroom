@@ -2,4 +2,10 @@
 .profile__container {
     margin: 2.5rem;
     margin-top: 10rem;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.profile__image {
+    border-radius: 50%;
 }

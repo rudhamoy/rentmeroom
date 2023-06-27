@@ -1,4 +1,3 @@
-import React from 'react'
 import styles from './utils.module.css'
 
 const ModalPortal = ({
@@ -8,7 +7,7 @@ const ModalPortal = ({
   }) => {
   return (
     <div className={styles.modalPortal__Container}>
-       {children}
+        {children}
     </div>
   )
 }

@@ -90,9 +90,10 @@
     justify-content: center;
 }
 
-.recentUpdates__loadMore > button {
+.recentUpdates__loadMoreButton {
     padding: 0.6rem 2rem;
     background-color: #393838;
     color: white;
     cursor: pointer;
+    text-decoration: none;
 }
