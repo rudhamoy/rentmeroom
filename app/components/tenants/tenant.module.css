@@ -1,0 +1,15 @@
+
+.tenant__formContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.tenant__formContainer > input {
+    padding: .65rem;
+}
+
+.tenant__formContainer > button {
+    padding: .65rem;
+    cursor: pointer;
+}
