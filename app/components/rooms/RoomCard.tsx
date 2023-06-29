@@ -24,7 +24,8 @@ interface RoomCardProps {
 const RoomCard: React.FC<RoomCardProps> = ({ room }) => {
 
   const [showAction, setShowAction] = useState(false)
-  const router = useRouter()
+  const [bookmarked, setBookmarked] = useState(false)
+
   const pathname = usePathname()
 
   // helper function to show modal - edit/delete modal
@@ -32,9 +33,31 @@ const RoomCard: React.FC<RoomCardProps> = ({ room }) => {
     setShowAction(!showAction)
   }
 
+  // delete
   async function deleteHandler(roomId: string) {
     const res = await axios.delete(`/api/rooms/${roomId}`)
   }
+
+  // bookmark
+  const bookmarkHandler = async () => {
+    const res = await axios.post('/api/bookmark', {roomID: room._id})
+    if(res.data.message === 'deleted') {
+      setBookmarked(false)
+    } else {
+      setBookmarked(true)
+    }
+
+  }
+
+  // check if this room is already bookmarked
+  const checkBookmark = async () => {
+    const bookmark = await axios.post('/api/bookmark/exist', {roomID: room._id})
+    setBookmarked(bookmark.data.exist)
+  }
+
+  useEffect(() => {
+    checkBookmark()
+  }, [])
 
   return (
     <div className={styles.roomCard__container}>
@@ -54,7 +77,9 @@ const RoomCard: React.FC<RoomCardProps> = ({ room }) => {
         ) : pathname === "/profile" ? (
           <p style={{ position: "absolute", right: 1, top: 0, fontSize: ".65rem", padding: ".2rem", background: "yellow" }}>un-occupied</p>
         ) : (
-          <BsBookmarks style={{ position: "absolute", right: 1, top: 1, cursor: "pointer" }} />
+          <BsBookmarks onClick={bookmarkHandler} 
+          style={{ position: "absolute", right: 1, top: 1, cursor: "pointer", color: `${bookmarked === true ? "red" : "black"}` }} 
+          />
         )
         }
 
