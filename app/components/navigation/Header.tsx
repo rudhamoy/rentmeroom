@@ -34,12 +34,12 @@ const Header = async () => {
           )
             :
             (currentUser?.role === "tenant") ? (
-              <Link href={'/rooms/list'} style={{ color: "black", textDecoration: "none", marginRight: "1rem" }} >Book a rent</Link>
+              <Link href={'/bookings'} style={{ color: "black", textDecoration: "none", marginRight: "1rem" }} >Book a rent</Link>
             )
               :
               (
                 <>
-                  <Link href={'/rooms/list'} style={{ color: "black", textDecoration: "none", marginRight: "1rem" }} >Book a rent</Link>
+                  <Link href={'/bookings'} style={{ color: "black", textDecoration: "none", marginRight: "1rem" }} >Book a rent</Link>
                   <Link href={'/rooms/list'} style={{ color: "black", textDecoration: "none", marginRight: "1rem" }} >List your property</Link>
                 </>
               )

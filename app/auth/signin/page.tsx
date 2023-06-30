@@ -17,7 +17,6 @@ const SigninPage = () => {
   async function getCurrentUser() {
     const user = await axios.get('/api/users')
     setCurrentUser(user.data)
-
   }
 
   useEffect(() => {
@@ -36,7 +35,7 @@ const SigninPage = () => {
     } else {
       console.log('User not logged in + role not exist')
     }
-  }, [currentUser, data])
+  }, [currentUser, data, router])
 
   return (
     <>

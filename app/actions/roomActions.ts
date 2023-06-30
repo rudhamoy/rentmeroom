@@ -8,10 +8,6 @@ export async function getRoomDetails(slug: string) {
 }
 
 export const getOwnerRoomsList = async (id: string) => {
-  const res = await axios.post('http://localhost:3000/api/rooms/owner', {id})
+  const res = await axios.post(`${API_URL}/rooms/owner`, {id})
   return res.data
 }
-
-// export const getSearchRooms = () => {
-
-// }

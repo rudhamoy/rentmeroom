@@ -9,6 +9,7 @@ import { HiHome } from 'react-icons/hi'
 import { MdPeopleAlt, MdCurrencyRupee } from 'react-icons/md'
 import axios from 'axios'
 import { usePathname, useRouter } from 'next/navigation';
+import { useSession } from 'next-auth/react';
 
 interface RoomCardProps {
   room: {
@@ -27,6 +28,8 @@ const RoomCard: React.FC<RoomCardProps> = ({ room }) => {
   const [bookmarked, setBookmarked] = useState(false)
 
   const pathname = usePathname()
+
+  const {data} = useSession()
 
   // helper function to show modal - edit/delete modal
   function onClickHandler() {
@@ -57,7 +60,7 @@ const RoomCard: React.FC<RoomCardProps> = ({ room }) => {
 
   useEffect(() => {
     checkBookmark()
-  }, [])
+  }, [data])
 
   return (
     <div className={styles.roomCard__container}>

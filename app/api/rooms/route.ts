@@ -6,7 +6,7 @@ import { addressModel } from "../../../services/models/addressModel"
 
 import APIFeatures from "../../../services/utils/apiFeatures"
 
-// create room
+// -------------- CREATE ROOM --------------------
 export async function POST(request: Request) {
   const currentUser = await getCurrentUser()
 
@@ -18,6 +18,8 @@ export async function POST(request: Request) {
   return NextResponse.json(room)
 }
 
+
+// ------------------------ FETCH ROOM LIST -------------------------
 // get all rooms --- specially to get the list of new room
 export async function GET(request: Request) {
 

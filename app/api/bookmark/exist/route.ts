@@ -6,8 +6,12 @@ export async function POST(request: Request) {
     try {
         const body = await request.json();
         const currentUser = await getCurrentUser();
+
+        if(!currentUser) {
+            return NextResponse.json({"exist": false})
+        }
         
-        const bookmarkExisted = await Bookmark.findOne({userID: currentUser._id, roomID: body.roomID})
+        const bookmarkExisted = await Bookmark.findOne({userID: currentUser?._id, roomID: body.roomID})
 
         if(bookmarkExisted) {
             return NextResponse.json({"exist": true})

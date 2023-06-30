@@ -8,7 +8,7 @@ import RoomDetail from '@/components/rooms/RoomDetail'
 
 const RoomDetailPage = async ({ params }: { params: { roomId: string } }) => {
   const currentUser = await getCurrentUser()
-  const userId = currentUser._id.toString()
+  const userId = currentUser?._id.toString()
 
   const data = await getRoomDetails(params.roomId)
 

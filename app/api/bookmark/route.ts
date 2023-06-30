@@ -2,6 +2,10 @@ import { NextResponse } from "next/server";
 import { Bookmark } from "../../../services/models/bookmarkModel";
 import getCurrentUser from "@/actions/getCurrentUser";
 
+
+
+
+// ------------ CREATE BOOKMARK-----------------
 export async function POST(request: Request) {
     try {
         const body = await request.json();
@@ -39,5 +43,33 @@ export async function POST(request: Request) {
     } catch (error) {
         console.log(error)
     }
-  
 }
+
+
+// ------------ GET BOOKMARK LIST  -----------------
+export async function GET(request: Request){
+    const currentUser = await getCurrentUser()
+
+    if(!currentUser) {
+        return NextResponse.json({
+            "message" : "Your are not logged in"
+        })
+    }
+
+    const bookamrkList = await Bookmark.find({userID: currentUser._id})
+
+    if(bookamrkList) {
+        let populatedRoom = []
+        for(const room of bookamrkList){
+            const res = await fetch(`http://localhost:3000/api/rooms/${room.roomID}`)
+            const data = await res.json()
+            populatedRoom.push(data)
+        }
+        return NextResponse.json(populatedRoom)
+    }
+
+    return NextResponse.json({
+        "message" : "No bookmark found"
+    })
+}
+
