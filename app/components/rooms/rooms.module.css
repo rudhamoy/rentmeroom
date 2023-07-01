@@ -130,3 +130,16 @@
     position: relative;
     padding: .2rem;
 }
+
+
+/* ------- book button -------- */
+
+.bookButton {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    border: none;
+    background-color: unset;
+    cursor: pointer;
+    font-size: .9rem;
+}

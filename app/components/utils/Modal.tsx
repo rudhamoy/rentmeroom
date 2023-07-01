@@ -1,6 +1,6 @@
 import styles from './utils.module.css'
 
-const Modal = ({children, bgColor}: {children: React.ReactNode, bgColor: string}) => {
+const Modal = ({children, bgColor}: {children: React.ReactNode, bgColor?: string}) => {
   
   return (
     <div className={styles.modal__container} style={{backgroundColor: `${bgColor}`}}>

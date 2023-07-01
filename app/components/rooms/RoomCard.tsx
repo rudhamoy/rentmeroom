@@ -2,14 +2,16 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import styles from './rooms.module.css'
-import Image from 'next/image';
 import { BsThreeDots, BsBookmarks } from 'react-icons/bs'
 import { MdLocationOn } from 'react-icons/md'
 import { HiHome } from 'react-icons/hi'
 import { MdPeopleAlt, MdCurrencyRupee } from 'react-icons/md'
 import axios from 'axios'
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import { useSession } from 'next-auth/react';
+import { createPortal } from 'react-dom'
+import Modal from '../utils/Modal'
+import CreateBooking from '../booking/CreateBooking'
 
 interface RoomCardProps {
   room: {
@@ -26,10 +28,11 @@ const RoomCard: React.FC<RoomCardProps> = ({ room }) => {
 
   const [showAction, setShowAction] = useState(false)
   const [bookmarked, setBookmarked] = useState(false)
+  const [showModal, setShowModal] = useState(false)
 
   const pathname = usePathname()
 
-  const {data} = useSession()
+  const { data } = useSession()
 
   // helper function to show modal - edit/delete modal
   function onClickHandler() {
@@ -43,8 +46,8 @@ const RoomCard: React.FC<RoomCardProps> = ({ room }) => {
 
   // bookmark
   const bookmarkHandler = async () => {
-    const res = await axios.post('/api/bookmark', {roomID: room._id})
-    if(res.data.message === 'deleted') {
+    const res = await axios.post('/api/bookmark', { roomID: room._id })
+    if (res.data.message === 'deleted') {
       setBookmarked(false)
     } else {
       setBookmarked(true)
@@ -54,7 +57,7 @@ const RoomCard: React.FC<RoomCardProps> = ({ room }) => {
 
   // check if this room is already bookmarked
   const checkBookmark = async () => {
-    const bookmark = await axios.post('/api/bookmark/exist', {roomID: room._id})
+    const bookmark = await axios.post('/api/bookmark/exist', { roomID: room._id })
     setBookmarked(bookmark.data.exist)
   }
 
@@ -63,7 +66,9 @@ const RoomCard: React.FC<RoomCardProps> = ({ room }) => {
   }, [data])
 
   return (
-    <div className={styles.roomCard__container}>
+    <>
+
+<div className={styles.roomCard__container}>
       {/* left - Image  */}
       <div className={styles.roomCard__imageContainer}>
         <img src={room.images[0]} alt="rentmeroom_images" className={styles.roomCard__image} />
@@ -80,8 +85,8 @@ const RoomCard: React.FC<RoomCardProps> = ({ room }) => {
         ) : pathname === "/profile" ? (
           <p style={{ position: "absolute", right: 1, top: 0, fontSize: ".65rem", padding: ".2rem", background: "yellow" }}>un-occupied</p>
         ) : (
-          <BsBookmarks onClick={bookmarkHandler} 
-          style={{ position: "absolute", right: 1, top: 1, cursor: "pointer", color: `${bookmarked === true ? "red" : "black"}` }} 
+          <BsBookmarks onClick={bookmarkHandler}
+            style={{ position: "absolute", right: 1, top: 1, cursor: "pointer", color: `${bookmarked === true ? "red" : "black"}` }}
           />
         )
         }
@@ -98,36 +103,47 @@ const RoomCard: React.FC<RoomCardProps> = ({ room }) => {
 
         <div style={{ marginTop: '1rem' }}>
           <Link href={`/rooms/list/${room._id}`} className={styles.roomCard__title}>{room.title}</Link>
-          {/* price */}
 
+          {/* details container */}
           <div>
             {/* price */}
-            <div style={{ display: "flex", gap: ".5rem", alignItems: "center", marginTop: ".5rem" }}>
+            <div style={{ display: "flex", gap: ".5rem", alignItems: "center", marginTop: ".35rem" }}>
               <MdCurrencyRupee />
               <p style={{ fontSize: ".75rem" }}>{room.pricePerMonth}</p>
             </div>
             {/* location */}
-            <div style={{ display: "flex", gap: ".5rem", alignItems: "center", marginTop: ".5rem" }}>
+            <div style={{ display: "flex", gap: ".5rem", alignItems: "center", marginTop: ".35rem" }}>
               <MdLocationOn />
               <p style={{ fontSize: ".75rem" }}>{room?.address?.address}</p>
             </div>
             {/* room category */}
-            <div style={{ display: "flex", gap: ".5rem", alignItems: "center", marginTop: ".5rem" }}>
+            <div style={{ display: "flex", gap: ".5rem", alignItems: "center", marginTop: ".35rem" }}>
               <HiHome />
               <p style={{ fontSize: ".75rem" }}>{room?.roomCategory}</p>
             </div>
 
             {/* tenants */}
-            <div style={{ display: "flex", gap: ".5rem", alignItems: "center", marginTop: ".5rem" }}>
+            <div style={{ display: "flex", gap: ".5rem", alignItems: "center", marginTop: ".35rem" }}>
               <MdPeopleAlt />
               <p style={{ fontSize: ".75rem" }}>{room?.tenants}</p>
             </div>
 
           </div>
 
+          {pathname === '/bookings' && (
+            <button onClick={() => setShowModal(true)} className={styles.bookButton}>Book now</button>
+          )}
         </div>
       </div>
     </div>
+
+      {showModal === true && createPortal(
+        <Modal>
+          <CreateBooking setShowModal={setShowModal} room={room} />
+        </Modal>,
+        document.body
+      )}
+    </>
   )
 }
 
