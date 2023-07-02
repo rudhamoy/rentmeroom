@@ -59,7 +59,7 @@ export async function updateRoom(roomId: string, data: any) {
 
 // fetch the list of owner's room
 export async function ownerRooms(userId: any) {
-    const rooms = await roomModel.find({ userId: new ObjectId(userId) })
+    const rooms = await roomModel.find({ userId: new ObjectId(userId) }).populate({ path: 'address', model: addressModel })
     return rooms
 }
 

@@ -85,8 +85,19 @@ const RoomCard: React.FC<RoomCardProps> = ({ room }) => {
         ) : pathname === "/profile" ? (
           <p style={{ position: "absolute", right: 1, top: 0, fontSize: ".65rem", padding: ".2rem", background: "yellow" }}>un-occupied</p>
         ) : (
-          <BsBookmarks onClick={bookmarkHandler}
-            style={{ position: "absolute", right: 1, top: 1, cursor: "pointer", color: `${bookmarked === true ? "red" : "black"}` }}
+          // bookmakr
+          <BsBookmarks 
+          onClick={bookmarkHandler}
+          style={{ 
+            position: "absolute",
+            backgroundColor: `${bookmarked === true ? "black" : "lightgray"}`,
+            borderRadius: "50%",
+            padding: ".4rem",
+            right: 0, top: 0, 
+            cursor: "pointer", 
+            color: `${bookmarked === true ? "lightgray" : "black"}`,
+            fontSize: ".8rem"
+          }}
           />
         )
         }
@@ -101,7 +112,7 @@ const RoomCard: React.FC<RoomCardProps> = ({ room }) => {
           </div>
         )}
 
-        <div style={{ marginTop: '1rem' }}>
+        <div style={{ marginTop: '1.2rem' }}>
           <Link href={`/rooms/list/${room._id}`} className={styles.roomCard__title}>{room.title}</Link>
 
           {/* details container */}

@@ -50,7 +50,7 @@ export async function GET(request: Request) {
   const address = await addressModel.find({address: {$regex: location, $options: "i"}})
 
 
-  const apiFeatures = new APIFeatures(roomModel.find(), allQuery)
+  const apiFeatures = new APIFeatures(roomModel.find().populate({ path: 'address', model: addressModel }), allQuery)
   .filter()
   .priceRange([searchParams.get('min') || 2000, searchParams.get('max') || 30000])
   .address(address.map(location => location._id))
@@ -63,23 +63,6 @@ export async function GET(request: Request) {
 
   allRooms = await apiFeatures.query.clone();
 
-
-  /**
-   * get all rooms via room model and populate address data
-   * to make it easy to show address
-   */
-  const populatedAddress = [];
-
-  for (const room of allRooms) { //populate address data on every room via iterating over every room
-    const address = await addressModel.findById(room.address).exec();
-    const roomWithAddress = {
-      ...room.toObject(), // to change the mongoose documents to an object otherwise use the commented one
-      // ...room._doc,
-      address: address
-    };
-    populatedAddress.push(roomWithAddress);
-  }
-
   const totalRooms = await roomModel.countDocuments()
  
 
@@ -87,7 +70,8 @@ export async function GET(request: Request) {
     limit,
     totalRooms,
     filteredRoomCount,
-    rooms: populatedAddress,
+    rooms: allRooms,
+    // rooms: populatedAddress,
   });
 
 }

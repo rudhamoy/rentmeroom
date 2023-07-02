@@ -34,6 +34,7 @@ const ProfilePage = async () => {
                     <p style={{ marginTop: ".6rem" }}>{currentUser.name}</p>
                 )}
                 <p style={{ marginTop: ".6rem" }}>Email: {currentUser.email}</p>
+                <p style={{ marginTop: ".6rem" }}>Mobile: {currentUser.mobile}</p>
                 {/* {userType && (
                     <>
                         <p style={{ marginTop: ".6rem" }}>Mobile: {userType?.mobile}</p>
