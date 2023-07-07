@@ -9,12 +9,12 @@ export async function POST(request: Request) {
 
         if(!currentUser) {
             return NextResponse.json({"exist": false})
-        }
-        
-        const bookmarkExisted = await Bookmark.findOne({userID: currentUser?._id, roomID: body.roomID})
+        } else {
+            const bookmarkExisted = await Bookmark.findOne({userID: currentUser?._id, roomID: body.roomID})
 
-        if(bookmarkExisted) {
-            return NextResponse.json({"exist": true})
+            if(bookmarkExisted) {
+                return NextResponse.json({"exist": true})
+            }
         }
         
         return NextResponse.json({"exist": false})

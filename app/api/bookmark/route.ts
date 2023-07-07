@@ -4,7 +4,6 @@ import getCurrentUser from "@/actions/getCurrentUser";
 
 
 
-
 // ------------ CREATE BOOKMARK-----------------
 export async function POST(request: Request) {
     try {
@@ -39,7 +38,6 @@ export async function POST(request: Request) {
             });
         }
         
-        return  new Error('Only tenant can bookmark room')
     } catch (error) {
         console.log(error)
     }
@@ -56,11 +54,12 @@ export async function GET(request: Request){
         })
     }
 
-    const bookamrkList = await Bookmark.find({userID: currentUser._id})
+    const bookmarkList = await Bookmark.find({userID: currentUser._id})
+    
 
-    if(bookamrkList) {
+    if(bookmarkList) {
         let populatedRoom = []
-        for(const room of bookamrkList){
+        for(const room of bookmarkList){
             const res = await fetch(`http://localhost:3000/api/rooms/${room.roomID}`)
             const data = await res.json()
             populatedRoom.push(data)

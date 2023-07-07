@@ -142,7 +142,7 @@ const RoomCard: React.FC<RoomCardProps> = ({ room }) => {
           </div>
 
           {pathname === '/bookings' && (
-            <button onClick={() => setShowModal(true)} className={styles.bookButton}>Book now</button>
+            <button onClick={() => setShowModal(true)} className={styles.bookButton}>Book/Visit</button>
           )}
         </div>
       </div>

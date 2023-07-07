@@ -15,7 +15,7 @@ const ProfilePage = async () => {
      */
     let UIContent
     if (currentUser?.role === "owner") {
-        UIContent = <OwnerProfile userId={currentUser._id} />
+        UIContent = <OwnerProfile userId={currentUser?._id} />
     } else {
         UIContent = <TenantProfile />
     }
@@ -24,17 +24,17 @@ const ProfilePage = async () => {
         <div className={styles.profile__container}>
             {/* profile */}
             <div>
-                <img src={currentUser.image} alt={currentUser.name} className={styles.profile__image} />
+                <img src={currentUser?.image} alt={currentUser?.name} className={styles.profile__image} />
                 {currentUser ? (
                     <div>
-                        <p style={{ marginTop: ".6rem", fontWeight: "bold" }} >{currentUser.firstName} {currentUser.lastName}</p>
+                        <p style={{ marginTop: ".6rem", fontWeight: "bold" }} >{currentUser?.firstName} {currentUser?.lastName}</p>
                     </div>
                 ) : (
 
-                    <p style={{ marginTop: ".6rem" }}>{currentUser.name}</p>
+                    <p style={{ marginTop: ".6rem" }}>{currentUser?.name}</p>
                 )}
-                <p style={{ marginTop: ".6rem" }}>Email: {currentUser.email}</p>
-                <p style={{ marginTop: ".6rem" }}>Mobile: {currentUser.mobile}</p>
+                <p style={{ marginTop: ".6rem" }}>Email: {currentUser?.email}</p>
+                <p style={{ marginTop: ".6rem" }}>Mobile: {currentUser?.mobile}</p>
                 {/* {userType && (
                     <>
                         <p style={{ marginTop: ".6rem" }}>Mobile: {userType?.mobile}</p>
@@ -47,7 +47,7 @@ const ProfilePage = async () => {
             <hr />
 
             {/* aCtivities */}
-            {!currentUser.hasOwnProperty('role') ? (
+            {!currentUser?.hasOwnProperty('role') ? (
                 <div>
                    <p>Complete your profile</p>
                 </div>

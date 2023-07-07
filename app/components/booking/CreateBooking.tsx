@@ -1,5 +1,6 @@
 'use client'
 import axios from 'axios'
+import { useState } from 'react'
 import styles from './booking.module.css'
 
 interface CreateBookingProps {
@@ -9,8 +10,16 @@ interface CreateBookingProps {
 
 const CreateBooking:React.FC<CreateBookingProps> = ({setShowModal, room}) => {
 
+    const [ visitTime, setVisitTime ] = useState("")
+    const [ date, setDate ] = useState("")
+
     const bookingHandler = async () => {
         const res = await axios.post('/api/booking', {roomID: room._id})
+        console.log(res.data)
+    }
+
+    const createVisit = async () => {
+        const res = await axios.post('/api/visit', {roomID: room._id, date, visitTime})
         console.log(res.data)
     }
 
@@ -23,6 +32,11 @@ const CreateBooking:React.FC<CreateBookingProps> = ({setShowModal, room}) => {
                     <p style={{ marginTop: ".35rem" }}>₹ {room.pricePerMonth}</p>
                     <p style={{ marginTop: ".35rem" }}>{room?.address?.address}</p>
                     <button onClick={bookingHandler}>Confirm</button>
+                </div>
+                <div>
+                    <input type="date" value={date} onChange={e => setDate(e.target.value)} />
+                    <input type="time" value={visitTime} onChange={e => setVisitTime(e.target.value)} />
+                    <button onClick={createVisit}>Visit</button>
                 </div>
             </div>
         </div>

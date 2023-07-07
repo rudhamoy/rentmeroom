@@ -10,6 +10,7 @@ const BookingPage = () => {
   async function myBookmarkList () {
     const res = await axios.get('/api/bookmark')
     setBookmarkList(res.data)
+    console.log(res.data)
   }
 
   useEffect(() => {

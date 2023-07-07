@@ -37,14 +37,7 @@ export async function createRoom(data: any) {
 
 // get a single room - room details
 export async function roomDetails(roomId: string) {
-
-    const roomById = await roomModel.findById({ _id: roomId }).exec()
-    const address = await addressModel.findById(roomById.address).exec();
-    const room = {
-        ...roomById.toObject(),
-        // ...room._doc,
-        address: address
-    };
+    const room = await roomModel.findById({ _id: roomId }).populate({path: "address", model: addressModel})
     return room
 }
 
